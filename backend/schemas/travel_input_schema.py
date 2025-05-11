@@ -40,6 +40,24 @@ def get_travel_input_collection(db) -> Collection:
                                 "Banaybanay", "Lupon", "Mati City", "San Isidro", "Governor Generoso"],
                         "description": "Must be one of the listed municipalities"
                     },
+                    "satisfaction_score": {
+                        "bsonType": ["int", "null"],
+                        "minimum": 1,
+                        "maximum": 5,
+                        "description": "Optional satisfaction score (1-5)"
+                    },
+                    "system_satisfaction_score": {
+                        "bsonType": ["int", "null"],
+                        "minimum": 1,
+                        "maximum": 5,
+                        "description": "Optional system satisfaction score (1-5)"
+                    },
+                    "analytics_satisfaction_score": {
+                        "bsonType": ["int", "null"],
+                        "minimum": 1,
+                        "maximum": 5,
+                        "description": "Optional analytics satisfaction score (1-5)"
+                    },
                     "created_at": {
                         "bsonType": "date",
                         "description": "Must be a valid datetime"

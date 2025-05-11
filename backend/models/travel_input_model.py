@@ -34,7 +34,9 @@ class TravelInputModel:
         trip_duration: int,
         travel_season: TravelSeason,
         number_of_people: int,
-        municipality: Municipalities,  # Changed to use Municipalities enum
+        municipality: Municipalities,
+        system_satisfaction_score: int = None,
+        analytics_satisfaction_score: int = None,  # Added new field
         created_at: datetime = datetime.utcnow()
     ):
         self.budget = budget
@@ -43,6 +45,17 @@ class TravelInputModel:
         self.travel_season = travel_season
         self.number_of_people = number_of_people
         self.municipality = municipality
+        
+        # Validate system satisfaction score range
+        if system_satisfaction_score is not None and not (1 <= system_satisfaction_score <= 5):
+            raise ValueError("System satisfaction score must be between 1 and 5")
+        self.system_satisfaction_score = system_satisfaction_score
+
+        # Validate analytics satisfaction score range
+        if analytics_satisfaction_score is not None and not (1 <= analytics_satisfaction_score <= 5):
+            raise ValueError("Analytics satisfaction score must be between 1 and 5")
+        self.analytics_satisfaction_score = analytics_satisfaction_score
+
         self.created_at = created_at
 
     def to_dict(self):
@@ -53,6 +66,8 @@ class TravelInputModel:
             "travel_season": self.travel_season.value,
             "number_of_people": self.number_of_people,
             "municipality": self.municipality.value,
+            "system_satisfaction_score": self.system_satisfaction_score,
+            "analytics_satisfaction_score": self.analytics_satisfaction_score,  # Added new field
             "created_at": self.created_at
         }
 
@@ -65,5 +80,7 @@ class TravelInputModel:
             travel_season=TravelSeason(data["travel_season"]),
             number_of_people=int(data["number_of_people"]),
             municipality=Municipalities(data["municipality"]),
+            system_satisfaction_score=int(data.get("system_satisfaction_score")) if "system_satisfaction_score" in data else None,
+            analytics_satisfaction_score=int(data.get("analytics_satisfaction_score")) if "analytics_satisfaction_score" in data else None,  # Added new field
             created_at=data.get("created_at", datetime.utcnow())
         )
