@@ -1,6 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { backgroundImages } from './assets/imageData';
+import Dashboard from './components/Dashboard';
 import './index.css';
 
 function App() {
@@ -42,29 +43,34 @@ function App() {
   }, []);
 
   return (
-    <div className="landing-container">
-      {imagesLoaded ? (
-        <div className="background-slider">
-          {backgroundImages.map((image, index) => (
-            <div
-              key={index}
-              className={`slide ${index === currentImageIndex ? 'active' : ''}`}
-              style={{ 
-                backgroundImage: `url(${image})`,
-                zIndex: index === currentImageIndex ? 1 : 0
-              }}
-            />
-          ))}
+    <Routes>
+      <Route path="/" element={
+        <div className="landing-container">
+          {imagesLoaded ? (
+            <div className="background-slider">
+              {backgroundImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`slide ${index === currentImageIndex ? 'active' : ''}`}
+                  style={{ 
+                    backgroundImage: `url(${image})`,
+                    zIndex: index === currentImageIndex ? 1 : 0
+                  }}
+                />
+              ))}
+            </div>
+          ) : (
+            <div>Loading images...</div>
+          )}
+          <h1 className="main-heading">Too many places, not enough time?</h1>
+          <h2 className="sub-heading">Let SmartTour pick your perfect destination!</h2>
+          <button className="cta-button" onClick={() => navigate('/dashboard')}>
+            Start Your Journey in DavOr
+          </button>
         </div>
-      ) : (
-        <div>Loading images...</div>
-      )}
-      <h1 className="main-heading">Too many places, not enough time?</h1>
-      <h2 className="sub-heading">Let SmartTour pick your perfect destination!</h2>
-      <button className="cta-button" onClick={() => navigate('/travel-input')}>
-        Start Your Journey in DavOr
-      </button>
-    </div>
+      } />
+      <Route path="/dashboard" element={<Dashboard />} />
+    </Routes>
   );
 }
 

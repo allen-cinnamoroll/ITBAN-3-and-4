@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from dotenv import load_dotenv
 from pymongo import MongoClient
 from models.travel_input_model import TravelInputModel
@@ -9,6 +10,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 app.config['ENV'] = 'development'
 app.config['DEBUG'] = True
 

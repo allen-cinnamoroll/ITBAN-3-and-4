@@ -1,0 +1,160 @@
+/* Import Milkyway DEMO font */
+@font-face {
+  font-family: 'Milkyway DEMO';
+  src: url('/fonts/MilkywayDEMO.otf') format('opentype');
+}
+
+.ai-content {
+
+  min-height: calc(85vh - 200px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.content-paper {
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+}
+
+.content-title {
+  color: #0d47a1;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.form-paper {
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-title {
+  color: #1976d2;
+  margin-bottom: 1.3rem !important;
+  text-align: center;
+  font-weight: 600 !important;
+  font-size: 1.3rem !important;
+  font-family: 'Milkyway DEMO', sans-serif !important;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.form-field {
+  margin-bottom: 0 !important;
+}
+
+.form-field .MuiInputLabel-root {
+  font-size: 0.8rem;
+}
+
+.form-field .MuiOutlinedInput-root {
+  border-radius: 8px;
+}
+
+.form-field .MuiOutlinedInput-input {
+  padding: 12px 14px;
+  font-size: 0.8rem;
+}
+
+.form-field .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #1976d2;
+}
+
+.form-field .MuiSelect-select {
+  font-size: 0.8rem;
+}
+
+/* Add styles for dropdown menu items */
+.MuiMenu-paper .MuiMenuItem-root {
+  font-size: 0.8rem !important;
+  padding: 8px 16px;
+}
+
+.form-field input::placeholder {
+  font-size: 0.8rem;
+}
+
+/* Enhanced Submit Button Styles */
+.submit-button {
+  margin-top: .5rem !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 8px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  background: linear-gradient(-45deg, #1565c0, #1976d2, #2196f3, #42a5f5) !important;
+  background-size: 300% 300% !important;
+  animation: gradient-shift 5s ease infinite !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  width: 100%;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3) !important;
+}
+
+.submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-100%);
+  transition: 0.5s;
+}
+
+.submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.4) !important;
+  letter-spacing: 1.5px;
+}
+
+.submit-button:hover::before {
+  transform: translateX(100%);
+}
+
+.submit-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(25, 118, 210, 0.3) !important;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Make the submit button span both columns */
+.submit-button-container {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+  .form-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-paper {
+    padding: 1.5rem;
+  }
+} 
