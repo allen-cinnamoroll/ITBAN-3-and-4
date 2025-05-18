@@ -85,9 +85,17 @@
 }
 
 /* Enhanced Submit Button Styles */
+.submit-button-container {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .submit-button {
   margin-top: .5rem !important;
-  padding: 0.8rem 1.5rem !important;
+  padding: 0.8rem 2rem !important;
   border-radius: 8px !important;
   font-size: 1.1rem !important;
   font-weight: 600 !important;
@@ -98,7 +106,8 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative !important;
   overflow: hidden !important;
-  width: 100%;
+  width: auto !important;
+  min-width: 200px !important;
   letter-spacing: 0.5px;
   box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3) !important;
 }
@@ -140,12 +149,6 @@
   100% {
     background-position: 0% 50%;
   }
-}
-
-/* Make the submit button span both columns */
-.submit-button-container {
-  grid-column: 1 / -1;
-  margin-top: 1rem;
 }
 
 /* Responsive design for mobile */

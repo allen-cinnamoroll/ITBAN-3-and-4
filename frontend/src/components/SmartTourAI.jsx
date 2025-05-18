@@ -189,7 +189,8 @@ function SmartTourAI() {
       setSnackbar({
         open: true,
         message: groupSizeError,
-        severity: 'error'
+        severity: 'error',
+        duration: 3000
       });
       return;
     }
@@ -198,7 +199,8 @@ function SmartTourAI() {
       setSnackbar({
         open: true,
         message: 'Please fix all errors and fill in all fields before submitting.',
-        severity: 'error'
+        severity: 'error',
+        duration: 3000
       });
       return;
     }
@@ -218,7 +220,8 @@ function SmartTourAI() {
       setSnackbar({
         open: true,
         message: 'Successfully saved your travel preferences!',
-        severity: 'success'
+        severity: 'success',
+        duration: 6000
       });
 
       // Clear form after successful submission
@@ -253,7 +256,8 @@ function SmartTourAI() {
       setSnackbar({
         open: true,
         message: errorMessage,
-        severity: 'error'
+        severity: 'error',
+        duration: 3000
       });
     }
   };
@@ -411,7 +415,7 @@ function SmartTourAI() {
       </Paper>
       <Snackbar
         open={snackbar.open}
-        autoHideDuration={6000}
+        autoHideDuration={snackbar.duration || 6000}
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
