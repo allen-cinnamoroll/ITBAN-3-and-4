@@ -160,65 +160,11 @@ app.post('/api/recommendations', async (req, res) => {
       }
     }
 
-    // First, get recommendations to determine the destination
-    const recommendations = destinations
-      .filter(dest => {
-        const destBudget = parseFloat(dest.Budget.replace(/,/g, ''));
-        const userBudget = parseFloat(userPreferences.budget);
-        
-        const budgetMatch = Math.abs(destBudget - userBudget) <= (userBudget * 0.2);
-        const typeMatch = dest.Destination_Type.toLowerCase() === userPreferences.destination_type.toLowerCase();
-        const purposeMatch = dest.Travel_Purpose.toLowerCase() === userPreferences.travel_purpose.toLowerCase();
-        const seasonMatch = dest.Travel_season.toLowerCase() === userPreferences.travel_season.toLowerCase();
-        
-        return budgetMatch && typeMatch && purposeMatch && seasonMatch;
-      })
-      .map(dest => ({
-        destination: dest.Destination,
-        packing_tips: dest['Packing Tips'],
-        budget: dest.Budget,
-        destination_type: dest.Destination_Type,
-        travel_purpose: dest.Travel_Purpose,
-        travel_season: dest.Travel_season,
-        municipality: dest.Municipality,
-        similarity_score: 1.0
-      }))
-      .slice(0, 5);
-
-    let finalRecommendations = recommendations;
-
-    // If no exact matches, return top 5 based on type and purpose only
-    if (recommendations.length === 0) {
-      console.log('No exact matches found, trying partial matches...');
-      
-      finalRecommendations = destinations
-        .filter(dest => {
-          const typeMatch = dest.Destination_Type.toLowerCase() === userPreferences.destination_type.toLowerCase();
-          const purposeMatch = dest.Travel_Purpose.toLowerCase() === userPreferences.travel_purpose.toLowerCase();
-          return typeMatch && purposeMatch;
-        })
-        .map(dest => ({
-          destination: dest.Destination,
-          packing_tips: dest['Packing Tips'],
-          budget: dest.Budget,
-          destination_type: dest.Destination_Type,
-          travel_purpose: dest.Travel_Purpose,
-          travel_season: dest.Travel_season,
-          municipality: dest.Municipality,
-          similarity_score: 0.8
-        }))
-        .slice(0, 5);
-    }
-
-    // Get the first recommended destination
-    const recommendedDestination = finalRecommendations.length > 0 ? finalRecommendations[0].destination : '';
-
-    // Now save the user preferences to MongoDB with the recommended destination
+    // First, save the user preferences to MongoDB
     try {
       console.log('Creating new travel preference document...');
       const travelPreference = new TravelPreference({
         budget: parseFloat(userPreferences.budget),
-        destination: recommendedDestination,
         destination_type: userPreferences.destination_type,
         travel_season: userPreferences.travel_season,
         travel_purpose: userPreferences.travel_purpose,
@@ -232,10 +178,78 @@ app.post('/api/recommendations', async (req, res) => {
 
       const savedPreference = await travelPreference.save();
       console.log('Successfully saved user preferences:', JSON.stringify(savedPreference, null, 2));
+      console.log('Saved document _id:', savedPreference._id);
+      console.log('Document ID type:', typeof savedPreference._id);
+      console.log('Document ID string:', savedPreference._id.toString());
+
+      // Then, get recommendations
+      const recommendations = destinations
+        .filter(dest => {
+          const destBudget = parseFloat(dest.Budget.replace(/,/g, ''));
+          const userBudget = parseFloat(userPreferences.budget);
+          
+          const budgetMatch = Math.abs(destBudget - userBudget) <= (userBudget * 0.2);
+          const typeMatch = dest.Destination_Type.toLowerCase() === userPreferences.destination_type.toLowerCase();
+          const purposeMatch = dest.Travel_Purpose.toLowerCase() === userPreferences.travel_purpose.toLowerCase();
+          const seasonMatch = dest.Travel_season.toLowerCase() === userPreferences.travel_season.toLowerCase();
+          
+          console.log('Destination data:', {
+            rawDestination: dest.Destination,
+            destinationType: typeof dest.Destination,
+            budgetMatch,
+            typeMatch,
+            purposeMatch,
+            seasonMatch
+          });
+          
+          return budgetMatch && typeMatch && purposeMatch && seasonMatch;
+        })
+        .map(dest => {
+          console.log('Creating recommendation for destination:', dest.Destination);
+          return {
+            destination: dest.Destination,
+            packing_tips: dest['Packing Tips'],
+            budget: dest.Budget,
+            destination_type: dest.Destination_Type,
+            travel_purpose: dest.Travel_Purpose,
+            travel_season: dest.Travel_season,
+            municipality: dest.Municipality,
+            similarity_score: 1.0
+          };
+        })
+        .slice(0, 5);
+
+      console.log('Final recommendations before sending:', JSON.stringify(recommendations, null, 2));
+
+      let finalRecommendations = recommendations;
+
+      // If no exact matches, return top 5 based on type and purpose only
+      if (recommendations.length === 0) {
+        console.log('No exact matches found, trying partial matches...');
+        
+        finalRecommendations = destinations
+          .filter(dest => {
+            const typeMatch = dest.Destination_Type.toLowerCase() === userPreferences.destination_type.toLowerCase();
+            const purposeMatch = dest.Travel_Purpose.toLowerCase() === userPreferences.travel_purpose.toLowerCase();
+            return typeMatch && purposeMatch;
+          })
+          .map(dest => ({
+            destination: dest.Destination,
+            packing_tips: dest['Packing Tips'],
+            budget: dest.Budget,
+            destination_type: dest.Destination_Type,
+            travel_purpose: dest.Travel_Purpose,
+            travel_season: dest.Travel_season,
+            municipality: dest.Municipality,
+            similarity_score: 0.8
+          }))
+          .slice(0, 5);
+      }
 
       // Update the saved preference with recommendations
       savedPreference.recommendations = finalRecommendations;
       await savedPreference.save();
+      console.log('Updated saved preference with recommendations:', JSON.stringify(savedPreference, null, 2));
 
       // Calculate daily budget based on trip duration
       const dailyBudget = parseFloat(userPreferences.budget) / parseFloat(userPreferences.trip_duration);
@@ -248,6 +262,8 @@ app.post('/api/recommendations', async (req, res) => {
         trip_duration: userPreferences.trip_duration,
         packing_tips: rec.packing_tips || 'No packing tips available for this destination'
       }));
+
+      console.log('Final recommendations with budget and packing tips:', JSON.stringify(recommendationsWithBudget, null, 2));
 
       res.json({
         status: 'success',

@@ -234,7 +234,6 @@ function SmartTourAI() {
       // Format the request data to match backend expectations
       const requestData = {
         budget: parseFloat(formData.budget),
-        destination: formData.destination,
         destination_type: selectedDestinationType.toLowerCase(),
         travel_season: selectedTravelSeason.toLowerCase(),
         travel_purpose: selectedTravelPurpose.toLowerCase(),

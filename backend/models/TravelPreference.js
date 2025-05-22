@@ -5,10 +5,6 @@ const travelPreferenceSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  destination: {
-    type: String,
-    required: false
-  },
   destination_type: {
     type: String,
     required: true

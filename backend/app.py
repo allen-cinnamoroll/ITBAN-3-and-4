@@ -285,5 +285,187 @@ def get_ratings():
         logger.error(f"Error in get_ratings: {str(e)}")
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/top-destinations', methods=['GET'])
+def get_top_destinations():
+    try:
+        logger.info("Received request for top destinations")
+        
+        # Aggregate recommendations to count occurrences of each destination
+        pipeline = [
+            # Unwind the recommendations array to get individual recommendations
+            {"$unwind": "$recommendations"},
+            # Group by destination and count occurrences
+            {"$group": {
+                "_id": "$recommendations.destination",
+                "recommendations": {"$sum": 1}
+            }},
+            # Sort by count in descending order
+            {"$sort": {"recommendations": -1}},
+            # Limit to top 5
+            {"$limit": 5},
+            # Project to match the expected format
+            {"$project": {
+                "name": "$_id",
+                "recommendations": 1,
+                "_id": 0
+            }}
+        ]
+        
+        top_destinations = list(user_preferences_collection.aggregate(pipeline))
+        
+        # If no data is found, return some default destinations
+        if not top_destinations:
+            top_destinations = [
+                {"name": "Mati City", "recommendations": 150},
+                {"name": "Cateel", "recommendations": 120},
+                {"name": "Boston", "recommendations": 100},
+                {"name": "Baganga", "recommendations": 80},
+                {"name": "Caraga", "recommendations": 60}
+            ]
+        
+        return jsonify({
+            'status': 'success',
+            'destinations': top_destinations
+        })
+    except Exception as e:
+        logger.error(f"Error in get_top_destinations: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/destination-types', methods=['GET'])
+def get_destination_types_distribution():
+    try:
+        logger.info("Received request for destination types distribution")
+        
+        # Aggregate recommendations to count occurrences of each destination type
+        pipeline = [
+            # Unwind the recommendations array to get individual recommendations
+            {"$unwind": "$recommendations"},
+            # Group by destination type and count occurrences
+            {"$group": {
+                "_id": "$recommendations.destination_type",
+                "count": {"$sum": 1}
+            }},
+            # Sort by count in descending order
+            {"$sort": {"count": -1}},
+            # Project to match the expected format
+            {"$project": {
+                "name": "$_id",
+                "value": "$count",
+                "_id": 0
+            }}
+        ]
+        
+        distribution = list(user_preferences_collection.aggregate(pipeline))
+        
+        # If no data is found, return some default distribution
+        if not distribution:
+            distribution = [
+                {"name": "Beach", "value": 35},
+                {"name": "Mountain", "value": 25},
+                {"name": "Cultural", "value": 20},
+                {"name": "Nature", "value": 15},
+                {"name": "Island", "value": 5}
+            ]
+        
+        return jsonify({
+            'status': 'success',
+            'distribution': distribution
+        })
+    except Exception as e:
+        logger.error(f"Error in get_destination_types_distribution: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/travel-seasons', methods=['GET'])
+def get_travel_seasons_distribution():
+    try:
+        logger.info("Received request for travel seasons distribution")
+        
+        # Aggregate recommendations to count occurrences of each travel season
+        pipeline = [
+            # Unwind the recommendations array to get individual recommendations
+            {"$unwind": "$recommendations"},
+            # Group by travel season and count occurrences
+            {"$group": {
+                "_id": "$recommendations.travel_season",
+                "count": {"$sum": 1}
+            }},
+            # Sort by count in descending order
+            {"$sort": {"count": -1}},
+            # Project to match the expected format
+            {"$project": {
+                "name": "$_id",
+                "value": "$count",
+                "_id": 0
+            }}
+        ]
+        
+        distribution = list(user_preferences_collection.aggregate(pipeline))
+        
+        # If no data is found, return some default distribution
+        if not distribution:
+            distribution = [
+                {"name": "Summer (March-May)", "value": 45},
+                {"name": "Rainy (June-October)", "value": 25},
+                {"name": "Holiday Season (November-February)", "value": 30}
+            ]
+        
+        return jsonify({
+            'status': 'success',
+            'distribution': distribution
+        })
+    except Exception as e:
+        logger.error(f"Error in get_travel_seasons_distribution: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/municipalities', methods=['GET'])
+def get_municipalities_distribution():
+    try:
+        logger.info("Received request for municipalities distribution")
+        
+        # Aggregate recommendations to count occurrences of each municipality
+        pipeline = [
+            # Unwind the recommendations array to get individual recommendations
+            {"$unwind": "$recommendations"},
+            # Group by municipality and count occurrences
+            {"$group": {
+                "_id": "$recommendations.municipality",
+                "count": {"$sum": 1}
+            }},
+            # Sort by count in descending order
+            {"$sort": {"count": -1}},
+            # Project to match the expected format
+            {"$project": {
+                "name": "$_id",
+                "value": "$count",
+                "_id": 0
+            }}
+        ]
+        
+        distribution = list(user_preferences_collection.aggregate(pipeline))
+        
+        # If no data is found, return some default distribution
+        if not distribution:
+            distribution = [
+                {"name": "Mati City", "value": 40},
+                {"name": "Cateel", "value": 25},
+                {"name": "Baganga", "value": 20},
+                {"name": "Boston", "value": 15},
+                {"name": "Caraga", "value": 10},
+                {"name": "Manay", "value": 8},
+                {"name": "Tarragona", "value": 7},
+                {"name": "Banaybanay", "value": 6},
+                {"name": "Lupon", "value": 5},
+                {"name": "San Isidro", "value": 4},
+                {"name": "Governor Generoso", "value": 3}
+            ]
+        
+        return jsonify({
+            'status': 'success',
+            'distribution': distribution
+        })
+    except Exception as e:
+        logger.error(f"Error in get_municipalities_distribution: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True) 

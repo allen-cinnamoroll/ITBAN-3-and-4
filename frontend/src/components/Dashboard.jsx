@@ -4,9 +4,13 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
+import Grid from '@mui/material/Grid';
 import SmartTourAI from './SmartTourAI';
 import SatisfactionKPIs from './SatisfactionKPIs';
 import TopDestinations from './TopDestinations';
+import DestinationTypesChart from './DestinationTypesChart';
+import TravelSeasonsChart from './TravelSeasonsChart';
+import MunicipalitiesChart from './MunicipalitiesChart';
 import './Dashboard.css';
 
 function Dashboard() {
@@ -62,7 +66,20 @@ function Dashboard() {
               System Performance Metrics
             </Typography>
             <SatisfactionKPIs />
-            <TopDestinations />
+            <Grid container spacing={2} sx={{ mt: 2 }}>
+              <Grid item xs={12} md={6}>
+                <TopDestinations />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <DestinationTypesChart />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <TravelSeasonsChart />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <MunicipalitiesChart />
+              </Grid>
+            </Grid>
           </Box>
         ) : (
           <SmartTourAI />

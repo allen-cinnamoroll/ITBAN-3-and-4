@@ -11,37 +11,43 @@ import {
 } from 'recharts';
 import axios from 'axios';
 
-function TopDestinations() {
-  const [topDestinations, setTopDestinations] = useState([]);
+function MunicipalitiesChart() {
+  const [distribution, setDistribution] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchTopDestinations = async () => {
+    const fetchDistribution = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5000/api/top-destinations');
+        const response = await axios.get('http://localhost:5000/api/municipalities');
         if (response.data.status === 'success') {
-          setTopDestinations(response.data.destinations);
+          setDistribution(response.data.distribution);
           setError(null);
         }
       } catch (error) {
-        console.error('Error fetching top destinations:', error);
-        setError('Failed to load top destinations');
+        console.error('Error fetching municipalities distribution:', error);
+        setError('Failed to load municipalities distribution');
         // Fallback data in case of error
-        setTopDestinations([
-          { name: 'Mati City', recommendations: 150 },
-          { name: 'Cateel', recommendations: 120 },
-          { name: 'Boston', recommendations: 100 },
-          { name: 'Baganga', recommendations: 80 },
-          { name: 'Caraga', recommendations: 60 }
+        setDistribution([
+          { name: "Mati City", value: 40 },
+          { name: "Cateel", value: 25 },
+          { name: "Baganga", value: 20 },
+          { name: "Boston", value: 15 },
+          { name: "Caraga", value: 10 },
+          { name: "Manay", value: 8 },
+          { name: "Tarragona", value: 7 },
+          { name: "Banaybanay", value: 6 },
+          { name: "Lupon", value: 5 },
+          { name: "San Isidro", value: 4 },
+          { name: "Governor Generoso", value: 3 }
         ]);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchTopDestinations();
+    fetchDistribution();
   }, []);
 
   if (loading) {
@@ -65,12 +71,12 @@ function TopDestinations() {
   return (
     <Paper elevation={3} sx={{ p: 2, mt: 2 }}>
       <Typography variant="h6" gutterBottom>
-        Top 5 Recommended Destinations
+        Preferred Municipalities
       </Typography>
       <Box sx={{ width: '100%', height: 300 }}>
         <ResponsiveContainer>
           <BarChart
-            data={topDestinations}
+            data={distribution}
             margin={{
               top: 20,
               right: 30,
@@ -79,10 +85,16 @@ function TopDestinations() {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" hide={true} />
-            <YAxis label={{ value: 'Recommendations', angle: -90, position: 'insideLeft' }} />
-            <Tooltip formatter={(value, name) => [`${value} recommendations`, name]} />
-            <Bar dataKey="recommendations" fill="#1976d2" />
+            <XAxis 
+              dataKey="name" 
+              angle={-45}
+              textAnchor="end"
+              height={100}
+              interval={0}
+            />
+            <YAxis label={{ value: 'Number of Recommendations', angle: -90, position: 'insideLeft' }} />
+            <Tooltip formatter={(value) => [`${value} recommendations`, 'Count']} />
+            <Bar dataKey="value" fill="#82ca9d" />
           </BarChart>
         </ResponsiveContainer>
       </Box>
@@ -90,4 +102,4 @@ function TopDestinations() {
   );
 }
 
-export default TopDestinations; 
+export default MunicipalitiesChart; 
