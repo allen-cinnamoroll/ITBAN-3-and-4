@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import SmartTourAI from './SmartTourAI';
+import SatisfactionKPIs from './SatisfactionKPIs';
+import TopDestinations from './TopDestinations';
 import './Dashboard.css';
 
 function Dashboard() {
@@ -55,7 +57,13 @@ function Dashboard() {
       {/* Content Area */}
       <Container maxWidth="lg" className="content-area">
         {activeNav === 'dashboard' ? (
-          <div>Dashboard Content</div>
+          <Box sx={{ mt: 4 }}>
+            <Typography variant="h5" gutterBottom>
+              System Performance Metrics
+            </Typography>
+            <SatisfactionKPIs />
+            <TopDestinations />
+          </Box>
         ) : (
           <SmartTourAI />
         )}

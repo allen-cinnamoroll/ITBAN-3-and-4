@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   Container,
@@ -13,10 +13,15 @@ import {
   Select,
   InputAdornment,
   Snackbar,
-  Alert
+  Alert,
+  Grid,
+  Card,
+  CardContent,
+  Divider,
+  Rating,
+  Stack
 } from '@mui/material';
 import './SmartTourAI.css';
-
 // Configure axios defaults
 axios.defaults.baseURL = 'http://localhost:5000';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
@@ -44,6 +49,20 @@ function SmartTourAI() {
     open: false,
     message: '',
     severity: 'success'
+  });
+
+  const [recommendations, setRecommendations] = useState({
+    predictive: []
+  });
+
+  const [ratings, setRatings] = useState({
+    system_satisfaction_score: 0,
+    analytics_satisfaction_score: 0
+  });
+
+  const [averageRatings, setAverageRatings] = useState({
+    system_satisfaction_score: 0,
+    analytics_satisfaction_score: 0
   });
 
   const destinationTypes = [
@@ -84,9 +103,8 @@ function SmartTourAI() {
   const travelPurposes = [
     { value: 1, label: 'Relaxation' },
     { value: 2, label: 'Adventure' },
-    { value: 3, label: 'Food Trip' },
-    { value: 4, label: 'Cultural Discovery' },
-    { value: 5, label: 'Nature Appreciation' }
+    { value: 3, label: 'Nature Appreciation' },
+    { value: 4, label: 'Cultural Discovery' }
   ];
 
   const validateGroupSize = (groupType, numberOfPeople) => {
@@ -206,51 +224,119 @@ function SmartTourAI() {
     }
     
     try {
-      const response = await axios.post('/travel-input', {
+      // Get the label values for the selected options
+      const selectedDestinationType = destinationTypes.find(type => type.value === parseInt(formData.destinationType))?.label || '';
+      const selectedTravelSeason = travelSeasons.find(season => season.value === parseInt(formData.travelSeason))?.label.split(' ')[0] || '';
+      const selectedTravelPurpose = travelPurposes.find(purpose => purpose.value === parseInt(formData.travelPurpose))?.label || '';
+      const selectedMunicipality = municipalities.find(municipality => municipality.value === parseInt(formData.municipality))?.label || '';
+      const selectedGroupType = groupTypes.find(type => type.value === parseInt(formData.groupType))?.label || '';
+
+      // Format the request data to match backend expectations
+      const requestData = {
         budget: parseFloat(formData.budget),
-        destination_type: parseInt(formData.destinationType),
-        trip_duration: parseInt(formData.tripDuration),
-        travel_season: parseInt(formData.travelSeason),
+        destination: formData.destination,
+        destination_type: selectedDestinationType.toLowerCase(),
+        travel_season: selectedTravelSeason.toLowerCase(),
+        travel_purpose: selectedTravelPurpose.toLowerCase(),
+        municipality: selectedMunicipality.toLowerCase(),
+        group_type: selectedGroupType.toLowerCase(),
         number_of_people: parseInt(formData.numberOfPeople),
-        municipality: parseInt(formData.municipality),
-        group_type: parseInt(formData.groupType),
-        travel_purpose: parseInt(formData.travelPurpose)
-      });
+        trip_duration: parseInt(formData.tripDuration)
+      };
 
-      setSnackbar({
-        open: true,
-        message: 'Successfully saved your travel preferences!',
-        severity: 'success',
-        duration: 6000
-      });
+      console.log('Sending request to:', axios.defaults.baseURL + '/api/recommendations');
+      console.log('Request data:', JSON.stringify(requestData, null, 2));
 
-      // Clear form after successful submission
-      setFormData({
-        budget: '',
-        destinationType: '',
-        tripDuration: '',
-        travelSeason: '',
-        numberOfPeople: '',
-        municipality: '',
-        groupType: '',
-        travelPurpose: ''
-      });
-      setErrors({
-        budget: '',
-        tripDuration: '',
-        numberOfPeople: '',
-        groupSize: ''
-      });
+      const response = await axios.post('/api/recommendations', requestData);
+      
+      console.log('Raw response data:', JSON.stringify(response.data, null, 2));
+
+      if (response.data.status === 'success') {
+        // Log the saved preference ID
+        console.log('Saved preference ID:', response.data.saved_preference_id);
+        
+        // Process both prescriptive and predictive recommendations
+        let prescriptiveRecs = [];
+        let predictiveRecs = [];
+
+        if (response.data.recommendations) {
+          // Handle predictive recommendations first
+          if (response.data.recommendations.predictive) {
+            predictiveRecs = response.data.recommendations.predictive.map(rec => {
+              const destination = rec.destination || rec.Destination || 'Unknown Destination';
+              console.log('Processing predictive recommendation:', { destination, packing_tips: rec.packing_tips });
+              return {
+                ...rec,
+                destination: destination
+              };
+            });
+          }
+
+          // Handle prescriptive recommendations
+          if (response.data.recommendations.prescriptive) {
+            console.log('Raw prescriptive recommendations:', response.data.recommendations.prescriptive);
+            prescriptiveRecs = response.data.recommendations.prescriptive.map(rec => {
+              console.log('Processing prescriptive recommendation:', rec);
+              return {
+                ...rec,
+                destination: rec.destination || 'Unknown Destination',
+                packing_tips: rec.packing_tips || 'No packing tips available for this destination'
+              };
+            });
+          } else if (predictiveRecs.length > 0) {
+            // If no prescriptive recommendations, use predictive ones
+            console.log('Using predictive recommendations as prescriptive');
+            prescriptiveRecs = predictiveRecs.map(rec => {
+              const dailyBudget = parseFloat(rec.budget.replace(/,/g, ''));
+              const totalBudget = dailyBudget * parseInt(formData.tripDuration);
+              console.log('Converting predictive to prescriptive:', {
+                destination: rec.destination,
+                packing_tips: rec.packing_tips,
+                dailyBudget,
+                totalBudget
+              });
+              return {
+                ...rec,
+                destination: rec.destination,
+                daily_budget: dailyBudget.toFixed(2),
+                total_budget: totalBudget.toFixed(2),
+                trip_duration: parseInt(formData.tripDuration),
+                packing_tips: rec.packing_tips || 'No packing tips available for this destination'
+              };
+            });
+          }
+        }
+
+        console.log('Processed prescriptive recommendations:', JSON.stringify(prescriptiveRecs, null, 2));
+        console.log('Processed predictive recommendations:', JSON.stringify(predictiveRecs, null, 2));
+
+        const newRecommendations = {
+          prescriptive: prescriptiveRecs,
+          predictive: predictiveRecs
+        };
+
+        console.log('Setting recommendations state:', JSON.stringify(newRecommendations, null, 2));
+        setRecommendations(newRecommendations);
+        
+        setSnackbar({
+          open: true,
+          message: 'Successfully saved preferences and got recommendations!',
+          severity: 'success',
+          duration: 6000
+        });
+      } else {
+        throw new Error(response.data.message || 'Failed to get recommendations');
+      }
 
     } catch (error) {
       console.error('Error submitting form:', error);
-      let errorMessage = 'Failed to save travel preferences. ';
+      let errorMessage = 'Failed to get recommendations. ';
       if (error.response?.data?.error) {
         errorMessage += error.response.data.error;
       } else if (error.message.includes('Network Error')) {
         errorMessage += 'Please check if the backend server is running.';
       } else {
-        errorMessage += 'Please try again.';
+        errorMessage += error.message || 'Please try again.';
       }
 
       setSnackbar({
@@ -265,6 +351,140 @@ function SmartTourAI() {
   const handleCloseSnackbar = () => {
     setSnackbar(prev => ({ ...prev, open: false }));
   };
+
+  const renderRecommendations = () => {
+    console.log('Rendering recommendations. Current state:', recommendations);
+    
+    // Check if we have any recommendations
+    if (!recommendations || (!recommendations.prescriptive?.length && !recommendations.predictive?.length)) {
+      console.log('No recommendations to display');
+      return null;
+    }
+
+    return (
+      <Box sx={{ mt: 4 }}>
+        <Grid container spacing={3}>
+          {/* Prescriptive Recommendations */}
+          <Grid item xs={12} md={6}>
+            <Paper elevation={3} sx={{ p: 2 }}>
+              <Typography variant="h6" gutterBottom color="primary">
+                Budget Prescription
+              </Typography>
+              <Typography variant="body2" color="text.secondary" paragraph>
+                Based on your trip duration and destination preferences
+              </Typography>
+              {recommendations.prescriptive?.length > 0 ? (
+                recommendations.prescriptive.map((rec, index) => (
+                  <Card key={index} sx={{ mb: 2 }}>
+                    <CardContent>
+                      <Typography variant="h6" gutterBottom>
+                        {rec.destination}
+                      </Typography>
+                      <Typography variant="body1" color="text.secondary" paragraph>
+                        Daily Budget: ₱{rec.daily_budget}
+                      </Typography>
+                      <Typography variant="body1" color="text.secondary" paragraph>
+                        Trip Duration: {rec.trip_duration} days
+                      </Typography>
+                      <Typography variant="h6" color="primary" paragraph>
+                        Total Budget: ₱{rec.total_budget}
+                      </Typography>
+                      <Divider sx={{ my: 1 }} />
+                      <Typography variant="subtitle1" color="primary" gutterBottom>
+                        Packing Tips:
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" paragraph>
+                        Since you're going to {rec.destination_type}, you need to bring: {rec.packing_tips}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                ))
+              ) : (
+                <Typography variant="body1" color="text.secondary">
+                  No prescriptive recommendations available.
+                </Typography>
+              )}
+            </Paper>
+          </Grid>
+
+          {/* Predictive Recommendations */}
+          <Grid item xs={12} md={6}>
+            <Paper elevation={3} sx={{ p: 2 }}>
+              <Typography variant="h6" gutterBottom color="secondary">
+                Predictive Recommendations
+              </Typography>
+              <Typography variant="body2" color="text.secondary" paragraph>
+                Based on machine learning analysis
+              </Typography>
+              {recommendations.predictive?.length > 0 ? (
+                recommendations.predictive.map((rec, index) => (
+                  <Card key={index} sx={{ mb: 2 }}>
+                    <CardContent>
+                      <Typography variant="h6" gutterBottom>
+                        Based on your preferences, we predict you'd enjoy {rec.destination} most!
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                ))
+              ) : (
+                <Typography variant="body1" color="text.secondary">
+                  No predictive recommendations available.
+                </Typography>
+              )}
+            </Paper>
+          </Grid>
+        </Grid>
+      </Box>
+    );
+  };
+
+  const handleRatingChange = (type, value) => {
+    setRatings(prev => ({
+      ...prev,
+      [type]: value
+    }));
+  };
+
+  const handleSubmitRating = async () => {
+    try {
+      const response = await axios.post('/api/ratings', {
+        system_satisfaction_score: ratings.system_satisfaction_score,
+        analytics_satisfaction_score: ratings.analytics_satisfaction_score
+      });
+
+      if (response.data.status === 'success') {
+        setSnackbar({
+          open: true,
+          message: 'Thank you for your feedback!',
+          severity: 'success',
+          duration: 3000
+        });
+      }
+    } catch (error) {
+      setSnackbar({
+        open: true,
+        message: 'Failed to submit rating. Please try again.',
+        severity: 'error',
+        duration: 3000
+      });
+    }
+  };
+
+  // Add useEffect to fetch ratings when component mounts
+  useEffect(() => {
+    const fetchRatings = async () => {
+      try {
+        const response = await axios.get('/api/ratings');
+        if (response.data.status === 'success') {
+          setAverageRatings(response.data.averages);
+        }
+      } catch (error) {
+        console.error('Error fetching ratings:', error);
+      }
+    };
+
+    fetchRatings();
+  }, []);
 
   return (
     <Container maxWidth="md" className="ai-content">
@@ -407,12 +627,63 @@ function SmartTourAI() {
                 size="large"
                 className="submit-button"
               >
-                Get Recommendations
+                Submit
               </Button>
             </Box>
           </Box>
         </form>
       </Paper>
+
+      {/* Render recommendations */}
+      {renderRecommendations()}
+
+      {/* Rating Footer */}
+      <Paper elevation={3} sx={{ mt: 4, p: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          Rate Your Experience
+        </Typography>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
+            <Stack spacing={1}>
+              <Typography variant="subtitle1">System Satisfaction</Typography>
+              <Rating
+                value={ratings.system_satisfaction_score}
+                onChange={(event, newValue) => handleRatingChange('system_satisfaction_score', newValue)}
+                precision={0.5}
+              />
+              <Typography variant="caption" color="text.secondary">
+                Average Rating: {averageRatings.system_satisfaction_score.toFixed(1)} / 5.0
+              </Typography>
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack spacing={1}>
+              <Typography variant="subtitle1">Analytics Satisfaction</Typography>
+              <Rating
+                value={ratings.analytics_satisfaction_score}
+                onChange={(event, newValue) => handleRatingChange('analytics_satisfaction_score', newValue)}
+                precision={0.5}
+              />
+              <Typography variant="caption" color="text.secondary">
+                Average Rating: {averageRatings.analytics_satisfaction_score.toFixed(1)} / 5.0
+              </Typography>
+            </Stack>
+          </Grid>
+          <Grid item xs={12}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleSubmitRating}
+                disabled={ratings.system_satisfaction_score === 0 || ratings.analytics_satisfaction_score === 0}
+              >
+                Submit Rating
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      </Paper>
+
       <Snackbar
         open={snackbar.open}
         autoHideDuration={snackbar.duration || 6000}
