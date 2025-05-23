@@ -1,26 +1,270 @@
-﻿Destination,Packing Tips,Budget,Destination_Type,Travel_Purpose,Travel_season,Municipality,
-Dahican Surf Resort,"Sunscreen, swimwear, dry bag, hat, slippers","1,000",Beach,Relaxation,Summer,Mati City,
-Masao Beach,"Towel, waterproof pouch, snacks, sunblock",500,Beach,Relaxation,Summer,Mati City,
-Amihan sa Dahican,"Sunglasses, beach mat, swim gear, reusable water bottle",800,Beach,Relaxation,Summer,Mati City,
-Amihan sa Dahican,"Sunglasses, beach mat, swim gear, reusable water bottle",800,Beach,Adventure,Summer,Mati City,
-Amihan sa Dahican,"Sunglasses, beach mat, swim gear, reusable water bottle",800,Beach,Relaxation,Holiday Season,Mati City,
-Blue Bless Beach Resort,"Change of clothes, insect repellent, hat, sunblock",500,Beach,Relaxation,Summer,Mati City,
-Mayo Beach,"Light clothing, toiletries, water shoes",300,Beach,Relaxation,Summer,Mati City,
-Casa Blanca Mati,"Picnic mat, water, shades, camera, extra clothes, food, water","1,000",Beach,Relaxation,Summer,Mati City,
-Resurreccion Beach Resort,"Camping gear, dry bag, bug spray, Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water, Swimwear, extra cash, snacks",500,Beach,Relaxation,Summer,Mati City,
-Lane's Kalapyahan Beach Resort,"Hat, cooler with drinks, towel, camera","1,000",Beach,Relaxation,Summer,Mati City,
-Pujada Beach Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water",100,Beach,Relaxation,Summer,Mati City,
-Gregorio Beach Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water",500,Beach,Relaxation,Summer,Mati City,
-Subangan Surf Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water",550,Beach,Relaxation,Summer,Mati City,
-Secluded Beach Resort,"Camping gear, dry bag, bug spray, Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water",800,Beach,Relaxation,Rainy,Mati City,
-Pujada Island,"Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water","1,500",Island,Nature Appreciation,Summer,Mati City,
-Waniban Island,"Beach shoes, tent, flashlight, water, food, extra clothes","1,200",Island,Adventure,Summer,Mati City,
-Mount Hamiguitan Range,"Hiking shoes, jacket, water, trail snacks, flashlight","2,000",Mountain,Adventure,Summer,Mati City,
-Sleeping Dinosaur,"Hiking shoes, binoculars, sun hat, camera",500,Mountain,Adventure,Summer,Mati City,
-Kapuka Falls,"Extra clothes, waterproof bag, trekking sandals, camera, snacks, drinks",300,Nature,Nature Appreciation,Summer,Mati City,
-Subangan Museum,"Notebook, ID, comfortable shoes, bottled water, Camera",200,Cultural,Cultural Discovery,Rainy,Mati City,
-Guang-Guang Mangrove Park,"Mosquito repellent, waterproof sandals, sun hat",100,Nature,Nature Appreciation,Holiday Season,Mati City,
-Sleeping Dinosaur View Deck,"Light jacket, sunglasses, camera, water",100,Nature,Nature Appreciation,Holiday Season,Mati City,
-Southpoint Beach Resort,"Sunglasses, towel, swimwear, sunscreen",700,Beach,Relaxation,Holiday Season,Mati City,
-Oriental Reef Beach Resort,"Swimwear, beach towel, toiletries, dry bag, sunblock, food, camera, beach shoes, slippers, drinks",800,Beach,Relaxation,Summer,Mati City,
-Hermosas (OLAS) Azules Beach Resort,"Swimsuit, sunblock, food, camera, beach shoes, slippers, drinks","1,000",Beach,Relaxation,Summer,Mati City,
+﻿Destination,Packing Tips,Budget,Destination_Type,Travel_Purpose,Travel_season,Municipality
+Dahican Surf Resort,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel","1,500",Beach,Relaxation,Summer,Mati City
+Dahican Surf Resort,"Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes","1,500",Beach,Relaxation,Rainy,Mati City
+Dahican Surf Resort,"Sunscreen, swimwear, dry bag, hat, slippers","1,500",Beach,Relaxation,Holiday Season,Mati City
+Masao Beach,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",500,Beach,Relaxation,Summer,Mati City
+Masao Beach,"Towel, waterproof pouch, snacks, Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes",500,Beach,Relaxation,Rainy,Mati City
+Masao Beach,"Towel, waterproof pouch, snacks, sunblock, extra clothes, water",500,Beach,Relaxation,Holiday Season,Mati City
+Amihan sa Dahican,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",300,Beach,Relaxation,Summer,Mati City
+Amihan sa Dahican,"Extra clothes, swim gear, water, snacks, foods, umbrella, cap, jacket",300,Beach,Relaxation,Rainy,Mati City
+Amihan sa Dahican,"Sunglasses, beach mat, swim gear, water, extra clothes, foods, camera",300,Beach,Relaxation,Holiday Season,Mati City
+Blue Bless Beach Resort,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",500,Beach,Relaxation,Summer,Mati City
+Blue Bless Beach Resort,"Extra clothes, swim gear, water, snacks, foods, umbrella, cap, jacket",500,Beach,Relaxation,Rainy,Mati City
+Blue Bless Beach Resort,"Extra clothes, insect repellent, hat, sunblock, water, foods",500,Beach,Relaxation,Holiday Season,Mati City
+Mayo Beach,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",300,Beach,Relaxation,Summer,Mati City
+Mayo Beach,"Extra clothes, swim gear, water, snacks, foods, umbrella, cap, jacket",300,Beach,Relaxation,Rainy,Mati City
+Mayo Beach,"Light clothing, toiletries, water shoes",300,Beach,Relaxation,Holiday Season,Mati City
+Casa Blanca Mati,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods,, camera, drinks, Towel","1,000",Beach,Relaxation,Summer,Mati City
+Casa Blanca Mati,"Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes","1,000",Beach,Relaxation,Rainy,Mati City
+Casa Blanca Mati,"Picnic mat, water, shades, camera, extra clothes, food, water","1,000",Beach,Relaxation,Holiday Season,Mati City
+Resurreccion Beach Resort,"Camping gear, dry bag, bug spray, Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water, Swimwear, extra cash, snacks, camera",500,Beach,Relaxation,Summer,Mati City
+Resurreccion Beach Resort,"Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes",500,Beach,Relaxation,Rainy,Mati City
+Resurreccion Beach Resort,"Camping gear, dry bag, bug spray, Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water, Swimwear, extra cash, snacks",500,Beach,Relaxation,Holiday Season,Mati City
+Lane's Kalapyahan Beach Resort,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, drinks, Towel, camera","1,000",Beach,Relaxation,Summer,Mati City
+Lane's Kalapyahan Beach Resort,"Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes","1,000",Beach,Relaxation,Rainy,Mati City
+Lane's Kalapyahan Beach Resort,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, drinks, Towel, camera","1,000",Beach,Relaxation,Holiday Season,Mati City
+Pujada Beach Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water, camera",100,Beach,Relaxation,Summer,Mati City
+Pujada Beach Resort,"Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes",100,Beach,Relaxation,Rainy,Mati City
+Pujada Beach Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water, camera",100,Beach,Relaxation,Holiday Season,Mati City
+Gregorio Beach Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water",500,Beach,Relaxation,Summer,Mati City
+Gregorio Beach Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water, Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes",500,Beach,Relaxation,Rainy,Mati City
+Gregorio Beach Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water",500,Beach,Relaxation,Holiday Season,Mati City
+Subangan Surf Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water",550,Beach,Relaxation,Summer,Mati City
+Subangan Surf Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water",550,Beach,Relaxation,Rainy,Mati City
+Subangan Surf Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water",550,Beach,Relaxation,Holiday Season,Mati City
+Secluded Beach Resort,"Camping gear, dry bag, bug spray, Snorkeling gear, sunblock, food supplies, slippers, flashlight, water, camera",800,Beach,Relaxation,Summer,Mati City
+Secluded Beach Resort,"Flip-flops, rash guard, light snacks, slippers, extra clothes, food, water, cap, umbrella",800,Beach,Relaxation,Rainy,Mati City
+Secluded Beach Resort,"Camping gear, dry bag, bug spray, Snorkeling gear, sunblock, food supplies, slippers, flashlight, water, camera",800,Beach,Relaxation,Holiday Season,Mati City
+Pujada Island,"Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water","1,500",Island,Adventure,Summer,Mati City
+Pujada Island,"Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water","1,500",Island,Adventure,Holiday Season,Mati City
+Pujada Island,"Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water","1,500",Island,Nature Appreciation,Summer,Mati City
+Pujada Island,"Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water, extra clothes, camera","1,500",Island,Nature Appreciation,Holiday Season,Mati City
+Waniban Island,"Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water, extra clothes, camera","1,200",Island,Nature Appreciation,Summer,Mati City
+Waniban Island,"Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water, extra clothes, camera","1,200",Island,Nature Appreciation,Holiday Season,Mati City
+Waniban Island,"Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water, extra clothes, camera","1,200",Island,Adventure,Summer,Mati City
+Waniban Island,"Snorkeling gear, dry bag, sunblock, food supplies, slippers, tent, flashlight, water, extra clothes, camera","1,200",Island,Adventure,Holiday Season,Mati City
+Mount Hamiguitan Range,"Hiking shoes, jacket, water, trail snacks, flashlight","2,000",Mountain,Nature Appreciation,Summer,Mati City
+Mount Hamiguitan Range,"Hiking shoes, jacket, water, trail snacks, flashlight","2,000",Mountain,Nature Appreciation,Holiday Season,Mati City
+Mount Hamiguitan Range,"Hiking shoes, jacket, water, trail snacks, flashlight","2,000",Mountain,Adventure,Summer,Mati City
+Mount Hamiguitan Range,"Hiking shoes, jacket, water, trail snacks, flashlight","2,000",Mountain,Adventure,Holiday Season,Mati City
+Sleeping Dinosaur,"Hiking shoes, binoculars, sun hat, camera",500,Mountain,Nature Appreciation,Summer,Mati City
+Sleeping Dinosaur,"Hiking shoes, binoculars, sun hat, camera",500,Mountain,Adventure,Summer,Mati City
+Sleeping Dinosaur,"Hiking shoes, binoculars, sun hat, camera",500,Mountain,Nature Appreciation,Holiday Season,Mati City
+Sleeping Dinosaur,"Hiking shoes, binoculars, sun hat, camera",500,Mountain,Adventure,Holiday Season,Mati City
+Kapuka Falls,"Extra clothes, waterproof bag, trekking sandals, camera, snacks, drinks",300,Nature,Adventure,Summer,Mati City
+Kapuka Falls,"Extra clothes, waterproof bag, trekking sandals, camera, snacks, drinks",300,Nature,Adventure,Holiday Season,Mati City
+Kapuka Falls,"Extra clothes, waterproof bag, trekking sandals, camera, snacks, drinks",300,Nature,Nature Appreciation,Summer,Mati City
+Kapuka Falls,"Extra clothes, waterproof bag, trekking sandals, camera, snacks, drinks",300,Nature,Nature Appreciation,Holiday Season,Mati City
+Subangan Museum,"Camera, bottled water",200,Cultural,Cultural Discovery,Summer,Mati City
+Subangan Museum,"Camera, bottled water",200,Cultural,Cultural Discovery,Holiday Season,Mati City
+Subangan Museum,"Camera, bottled water, cap, umbrella",200,Cultural,Cultural Discovery,Rainy,Mati City
+Guang-Guang Mangrove Park,"Mosquito repellent, waterproof sandals, sun hat",100,Nature,Nature Appreciation,Summer,Mati City
+Guang-Guang Mangrove Park,"Mosquito repellent, waterproof sandals, sun hat",100,Nature,Nature Appreciation,Holiday Season,Mati City
+Guang-Guang Mangrove Park,"Mosquito repellent, waterproof sandals, cap, umbrella",100,Beach,Nature Appreciation,Rainy,Mati City
+Sleeping Dinosaur View Deck,"Light jacket, sunglasses, camera, water",100,Nature,Nature Appreciation,Summer,Mati City
+Sleeping Dinosaur View Deck,"Light jacket, sunglasses, camera, water",100,Nature,Nature Appreciation,Holiday Season,Mati City
+Southpoint Beach Resort,"Camping gear, dry bag, bug spray, Snorkeling gear, sunblock, food supplies, slippers, flashlight, water, camera",700,Beach,Relaxation,Summer,Mati City
+Southpoint Beach Resort,"Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes",700,Beach,Relaxation,Rainy,Mati City
+Southpoint Beach Resort,"Camping gear, dry bag, bug spray, Snorkeling gear, sunblock, food supplies, slippers, flashlight, water, camera",700,Beach,Relaxation,Holiday Season,Mati City
+Oriental Reef Beach Resort,"Swimwear, beach towel, toiletries, dry bag, sunblock, food, camera, beach shoes, slippers, drinks",800,Beach,Relaxation,Summer,Mati City
+Oriental Reef Beach Resort,"Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes",800,Beach,Relaxation,Rainy,Mati City
+Oriental Reef Beach Resort,"Swimwear, beach towel, toiletries, dry bag, sunblock, food, camera, beach shoes, slippers, drinks",800,Beach,Relaxation,Holiday Season,Mati City
+Hermosas (OLAS) Azules Beach Resort,"Swimwear, beach towel, toiletries, dry bag, sunblock, food, camera, beach shoes, slippers, drinks","1,000",Beach,Relaxation,Summer,Mati City
+Hermosas (OLAS) Azules Beach Resort,"Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes","1,000",Beach,Relaxation,Rainy,Mati City
+Hermosas (OLAS) Azules Beach Resort,"Swimwear, beach towel, toiletries, dry bag, sunblock, food, camera, beach shoes, slippers, drinks","1,000",Beach,Relaxation,Holiday Season,Mati City
+Leonora Beach Resort,"Swimwear, sunscreen, beach towel, slippers, sunglasses, food, water","1,000",Beach,Relaxation,Summer,Banaybanay
+Leonora Beach Resort,"Swimwear, beach towel, slippers, sunglasses, camera, cap, umbrella, food, water","1,000",Beach,Relaxation,Rainy,Banaybanay
+Leonora Beach Resort,"Swimwear, sunscreen, beach towel, slippers, sunglasses, food, water","1,000",Beach,Relaxation,Holiday Season,Banaybanay
+Bonhomie Leisure and Resort,"Swimwear, sunscreen, beach towel, slippers, sunglasses, food, water","1,500",Beach,Relaxation,Summer,Banaybanay
+Bonhomie Leisure and Resort,"Swimwear, beach towel, slippers, sunglasses, camera, cap, umbrella, food, water","1,500",Beach,Relaxation,Rainy,Banaybanay
+Bonhomie Leisure and Resort,"Swimwear, sunscreen, beach towel, slippers, sunglasses, food, water","1,500",Beach,Relaxation,Holiday Season,Banaybanay
+Dinagsaan Peak,"Hiking shoes, water, sun hat, insect repellent, camera, light snack",500,Mountain,Adventure,Summer,Banaybanay
+Dinagsaan Peak,"Hiking shoes, water, sun hat, insect repellent, camera, light snack",500,Mountain,Nature Appreciation,Holiday Season,Banaybanay
+Dinagsaan Peak,"Hiking shoes, water, sun hat, insect repellent, camera, light snack",500,Mountain,Nature Appreciation,Summer,Banaybanay
+Dinagsaan Peak,"Hiking shoes, water, sun hat, insect repellent, camera, light snack",500,Mountain,Adventure,Holiday Season,Banaybanay
+Rustic Lounge Resort,"Light casuals, swimwear, camera, water bottle","1,000",Resort,Relaxation,Summer,Banaybanay
+Rustic Lounge Resort,"Light casuals, swimwear, camera, water bottle, cap, jacket, umbrella","1,000",Resort,Relaxation,Rainy,Banaybanay
+Rustic Lounge Resort,"Light casuals, swimwear, camera, water bottle","1,000",Resort,Relaxation,Holiday Season,Banaybanay
+Burias Islet,"Snorkeling gear, waterproof bag, sunscreen, flip-flops",800,Island,Adventure,Summer,Banaybanay
+Burias Islet,"Snorkeling gear, waterproof bag, sunscreen, flip-flops",800,Island,Adventure,Holiday Season,Banaybanay
+Burias Islet,"Snorkeling gear, waterproof bag, sunscreen, flip-flops",800,Island, Nature Appreciation,Summer,Banaybanay
+Burias Islet,"Snorkeling gear, waterproof bag, sunscreen, flip-flops",800,Island, Nature Appreciation,Holiday Season,Banaybanay
+Bakkayan Beach Resort,"Light clothing, swimsuit, snacks, sunglasses, hat",500,Beach Resort,Relaxation,Summer,Banaybanay
+Bakkayan Beach Resort,"Light clothing, swimsuit, snacks, sunglasses, hat",500,Beach Resort,Relaxation,Rainy,Banaybanay
+Bakkayan Beach Resort,"Light clothing, swimsuit, snacks, sunglasses, hat",500,Beach Resort,Relaxation,Holiday Season,Banaybanay
+Mary's Wood,"Camera, snacks, water",300,Nature,Nature Appreciation,Summer,Banaybanay
+Mary's Wood,"Camera, snacks, water",300,Nature,Nature Appreciation,Holiday Season,Banaybanay
+Dicaoang Beach,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel","1,000",Beach,Relaxation,Summer,Lupon
+Dicaoang Beach,"Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes","1,000",Beach,Relaxation,Rainy,Lupon
+Dicaoang Beach,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel","1,000",Beach,Relaxation,Holiday Season,Lupon
+Sampaguita Beach,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel","1,000",Beach,Relaxation,Summer,Lupon
+Sampaguita Beach,"Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes","1,000",Beach,Relaxation,Rainy,Lupon
+Sampaguita Beach,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel","1,000",Beach,Relaxation,Holiday Season,Lupon
+Olanivan Island,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel","1,000",Island,Adventure,Summer,Lupon
+Olanivan Island,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel","1,000",Island,Adventure,Holiday Season,Lupon
+Olanivan Island,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel","1,000",Island,Nature Appreciation,Summer,Lupon
+Olanivan Island,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel","1,000",Island,Nature Appreciation,Holiday Season,Lupon
+Lumot Beach,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel","1,000",Beach,Relaxation,Summer,Lupon
+Lumot Beach,"Swimwear, dry bag, hat, slippers, umbrella, cap, jacket, extra clothes","1,000",Beach,Relaxation,Rainy,Lupon
+Lumot Beach,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel","1,000",Beach,Relaxation,Holiday Season,Lupon
+Dahonan Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",600,Nature,Adventure,Summer,Lupon
+Dahonan Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",600,Nature,Adventure,Holiday Season,Lupon
+Dahonan Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",600,Nature,Nature Appreciation,Summer,Lupon
+Dahonan Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",600,Nature,Nature Appreciation,Holiday Season,Lupon
+San Juan Nepomuceno Parish Church,Camera,100,Cultural,Cultural Discovery,Summer,Lupon
+San Juan Nepomuceno Parish Church,Camera,100,Cultural,Cultural Discovery,Holiday Season,Lupon
+Maligang Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",500,Nature,Nature Appreciation,Summer,Lupon
+Maligang Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",500,Nature,Adventure,Summer,Lupon
+Maligang Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",500,Nature,Adventure,Holiday Season,Lupon
+Maligang Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",500,Nature,Nature Appreciation,Holiday Season,Lupon
+Balite Hot Spring,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Relaxation,Summer,Lupon
+Balite Hot Spring,"Swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Relaxation,Rainy,Lupon
+Balite Hot Spring,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Relaxation,Holiday Season,Lupon
+Balite Hot Spring,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Nature Appreciation,Summer,Lupon
+Balite Hot Spring,"Swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Nature Appreciation,Rainy,Lupon
+Balite Hot Spring,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Nature Appreciation,Holiday Season,Lupon
+Tagactac Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Nature Appreciation,Summer,Lupon
+Tagactac Falls,"Swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Nature Appreciation,Rainy,Lupon
+Tagactac Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Nature Appreciation,Holiday Season,Lupon
+Pangyan Falls and Hot Spring,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Nature Appreciation,Summer,Lupon
+Pangyan Falls and Hot Spring,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Nature Appreciation,Holiday Season,Lupon
+Pangyan Falls and Hot Spring,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Adventure,Summer,Lupon
+Pangyan Falls and Hot Spring,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Adventure,Summer,Lupon
+Campawan Curtain Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Nature Appreciation,Summer,Lupon
+Campawan Curtain Falls,"Sunscreen, swimwear, dry bag, hat, slippers, extra clothes, foods, drinks, Towel",800,Nature,Nature Appreciation,Holiday Season,Lupon
+Mount Hamiguitan,"Camping gear, light clothes, flashlight, camera, cellphone, food, water, jacket, cap","7,000",Mountain,Adventure,Summer,San Isidro
+Mount Hamiguitan,"Camping gear, light clothes, flashlight, camera, cellphone, food, water, jacket, cap","7,000",Mountain,Adventure,Holiday Season,San Isidro
+Mount Hamiguitan,"Camping gear, light clothes, flashlight, camera, cellphone, food, water, jacket, cap","7,000",Mountain,Nature Appreciation,Summer,San Isidro
+Mount Hamiguitan,"Camping gear, light clothes, flashlight, camera, cellphone, food, water, jacket, cap","7,000",Mountain,Nature Appreciation,Holiday Season,San Isidro
+Danao Lake,"Bring extra water, dry bags, hiking shoes, and insect repellent.",1200,Nature,Adventure,Summer,Manay
+Danao Lake,"Bring extra water, dry bags, hiking shoes, and insect repellent.",1200,Nature,Nature Appreciation,Summer,Manay
+Danao Lake,"Bring extra water, dry bags, hiking shoes, and insect repellent.",1200,Nature,Nature Appreciation,Holiday Season,Manay
+Danao Lake,"Bring extra water, dry bags, hiking shoes, and insect repellent.",1200,Nature,Adventure,Holiday Season,Manay
+Panontongan Ridge,"Wear breathable clothing, pack light snacks, and use trekking poles if needed.",1000,Mountain,Nature Appreciation,Summer,Manay
+Bidayan Falls,"Wear non-slip footwear, pack a waterproof bag, and bring swimwear.",1100,Nature,Adventure,Summer,Manay
+Lake Diomaboc,"Bring a picnic mat, sunscreen, light snacks, and a good book.",1000,Nature,Relaxation,Summer,Manay
+Lapinigan River,"Bring water shoes, eco-friendly sunscreen, and a waterproof camera.",1000,Nature,Nature Appreciation,Summer,Manay
+Mabaho Cave,"Pack a flashlight or headlamp, wear helmets if available, and bring gloves.",1000,Nature,Nature Appreciation,Summer,Manay
+Tagdalid Falls,"Carry dry clothes, a first aid kit, and wear rugged sandals.",1100,Nature,Adventure,Summer,Manay
+Seawalk Facing the Pacific Ocean,"Wear comfortable sandals, bring a hat or umbrella, and pack a reusable water bottle.",1000,Cultural,Relaxation,Holiday Season,Manay
+WOW Manay Landmark,"Bring a camera for scenic views, wear comfy shoes, and bring a fan or sunshade.",1000,Cultural,Nature Appreciation,Holiday Season,Manay
+Rising Sun Beach Resort,"Pack sunscreen, swimwear, sunglasses, and a beach towel.",1500,Beach,Relaxation,Summer,Manay
+Bango Beach Resort,"Bring a snorkel set, aqua shoes, and waterproof phone case.",2000,Beach,Adventure,Summer,Manay
+Dawis Beach Resort,"Prepare a beach mat, sunblock, snacks, and an insulated water bottle.",1800,Beach,Relaxation,Summer,Manay
+Aliwagwag Falls Eco Park,"Quick-dry clothes, Rash guard or swimwear,
+Waterproof sandals or shoes, Dry bag,
+Microfiber towel,
+Waterproof phone pouch,
+Basic first aid (band-aid, alcohol),
+Insect repellent
+","1,000",Nature,Adventure,Summer,Cateel
+Campawan Curtain Falls,"Quick-dry clothes, Rash guard or swimwear,
+Waterproof sandals or shoes, Dry bag,
+Microfiber towel,
+Waterproof phone pouch,
+Basic first aid (band-aid, alcohol),
+Insect repellent","3,500",Nature,Adventure,Summer,Cateel
+Aliwagwag view deck & Park,"Light, comfy clothing, Walking shoes or rubber sandals, Cap or umbrella (for sun), Camera or phone with storage, Water bottle
+Shades or sunblock,
+Jacket (early mornings or windy spots)
+",200,Nature,Relaxation,Holiday,Cateel
+Long Beach Cream Sand,"Swimsuit + cover-up, Sunglasses & hat, Sunscreen (reef-safe), Flip-flops, Extra change of clothes
+Beach towel or mat, Water bottle, Light snacks, Cash (for entrance fees/snacks)
+","1,000",Beach,Relaxation,Summer,Cateel
+Mahoc Beach,"Swimsuit + cover-up, Sunglasses & hat, Sunscreen (reef-safe), Flip-flops, Extra change of clothes
+Beach towel or mat, Water bottle, Light snacks, Cash (for entrance fees/snacks)
+","2,000",Beach,Nature Appreciation,Summer,Cateel
+Cateel Baywalk & Miracle Nine,"Comfortable clothes, Light jacket or hoodie, Cap or umbrella, Camera or phone, Water bottle, Sunglasses
+
+",300,Cultural,Cultural Discovery,Holiday Season,Cateel
+Aya Lupe Beach Resort,"Swimsuit + cover-up, Sunglasses & hat, Sunscreen (reef-safe), Flip-flops, Extra change of clothes
+Beach towel or mat, Water bottle, Light snacks, Cash (for entrance fees/snacks)","3,200",Beach,Relaxation,Summer,Cateel
+Cagwait White Sand Beach,"Swimsuit + cover-up, Sunglasses & hat, Sunscreen (reef-safe), Flip-flops, Extra change of clothes
+Beach towel or mat, Water bottle, Light snacks, Cash (for entrance fees/snacks)",600,Beach,Relaxation,Summer,Cateel
+Tres Marias Islets,"Rashguard or swimwear, Dry bag, Snorkel gear (optional but fun!), Water shoes, Extra food and water, Sunscreen, Cash (for entrance fees/snacks)",500,Island,Relaxation,Summer,Cateel
+San Victor Island,"Swimsuit + cover-up, Sunglasses & hat, Sunscreen (reef-safe), Flip-flops, Extra change of clothes
+Beach towel or mat, Water bottle, Light snacks, Cash (for entrance fees/snacks)","2,500",Beach,Relaxation,Summer,Bagangga
+Lake Carolina,"Light clothing, Picnic mat or blanket, Insect repellent, Sunglasses & cap, Water bottle, Packed meal/snacks, Light jacket, Camera/binoculars (optional)","2,700",Nature,Relaxation,Summer,Bagangga
+Balite Hot Spring,"Swimwear (preferably dark-colored), Towel, Flip-flops, Toiletries (shampoo, soap), Plastic bag for wet clothes, Water bottle (stay hydrated), Light robe or cover-up, Hair tie or shower cap",300,Nature,Relaxation,Rainy,Bagangga
+Sunrise Boulevard,"Comfortable clothes,
+Light jacket or hoodie, Cap or umbrella, Camera or phone, Water bottle, Sunglasses
+",300,Nature,Relaxation,Holiday Season,Bagangga
+Poo Sandbar,"Swimsuit + cover-up, Sunglasses & hat, Sunscreen (reef-safe), Flip-flops, Extra change of clothes
+Beach towel or mat, Water bottle, Light snacks, Cash (for entrance fees/snacks)",250,Beach,Relaxation,Summer,Bagangga
+Ban-ao Caves,"Long sleeves & pants (protection from scrapes), Helmet or cap with headlamp, Gloves (optional but helpful for grip), Grippy shoes or hiking sandals, Small flashlight (backup light), Water & light snacks, Waterproof bag or ziplock for phone, Face towel or wet wipes
+
+",500,nature,Adventure,Summer,Bagangga
+Languyon Surfing Beach,"Swimsuit + cover-up, Sunglasses & hat, Sunscreen (reef-safe), Flip-flops, Extra change of clothes
+Beach towel or mat, Water bottle, Light snacks, Cash (for entrance fees/snacks)",500,Beach,Relaxation,Summer,Bagangga
+Pusan Point,"Comfortable clothes, Light jacket or hoodie, Cap or umbrella, Camera or phone, Water bottle, Sunglasses",300,Cultural,Cultural Discovery,Holiday,Caraga
+Kapuka Falls,"Quick-dry clothes, Rash guard or swimwear,
+Waterproof sandals or shoes, Dry bag,
+Microfiber towel,
+Waterproof phone pouch,
+Basic first aid (band-aid, alcohol),
+Insect repellent
+",600,Nature,Adventure,Summer,Caraga
+Oguad Falls,"Quick-dry clothes, Rash guard or swimwear,
+Waterproof sandals or shoes, Dry bag,
+Microfiber towel,
+Waterproof phone pouch,
+Basic first aid (band-aid, alcohol),
+Insect repellent
+",500,Nature,Relaxation,Rainy,Caraga
+Sungkuan Falls,"Quick-dry clothes, Rash guard or swimwear,
+Waterproof sandals or shoes, Dry bag,
+Microfiber towel,
+Waterproof phone pouch,
+Basic first aid (band-aid, alcohol),
+Insect repellent
+",500,Nature,Adventure,Rainy,Caraga
+Kiti-kiti Falls,"Quick-dry clothes, Rash guard or swimwear,
+Waterproof sandals or shoes, Dry bag,
+Microfiber towel,
+Waterproof phone pouch,
+Basic first aid (band-aid, alcohol),
+Insect repellent
+",500,Nature,Adventure,Rainy,Caraga
+Bango Beach Resort,"Swimsuit + cover-up, Sunglasses & hat, Sunscreen (reef-safe), Flip-flops, Extra change of clothes
+Beach towel or mat, Water bottle, Light snacks, Cash (for entrance fees/snacks)","1,000",beach,Relaxation,Summer,Caraga
+San Luis Beach,"Swimsuit + cover-up, Sunglasses & hat, Sunscreen (reef-safe), Flip-flops, Extra change of clothes
+Beach towel or mat, Water bottle, Light snacks, Cash (for entrance fees/snacks)",500,Beach,relaxation,Summer,Caraga
+Friar’s Beach,"Swimsuit + cover-up, Sunglasses & hat, Sunscreen (reef-safe), Flip-flops, Extra change of clothes
+Beach towel or mat, Water bottle, Light snacks, Cash (for entrance fees/snacks)",900,Beach,relaxation,Summer,Caraga
+San Salvador del Mundo Church,"Modest clothing,
+Bible or journal, Shawl or scarf, Offering/tithe (if attending a service), Water bottle, Simple footwear (some churches require removing shoes inside)
+",100,Cultural,Cultural Discovery,Holiday,Caraga
+Caraga Fortification,"Modest, comfy clothes, Closed shoes or sandals, Sling bag or backpack, Notebook or phone, Drinking water",200,Cultural,Cultural Discovery,Holiday,Caraga
+Camp Bernardino De Lavigan,"Bring snorkel gear, waterproof camera, beach shoes, and a first aid kit.",3000,Beach,Adventure,Summer,Governor Generoso
+El Don Resort,"Pack extra clothes, energy snacks, waterproof bag, and hiking sandals.",3000,Beach,Adventure,Summer,Governor Generoso
+Cape San Agustin,"Wear sun-protective clothing, bring a guidebook, and a reusable water bottle.",1000,Cultural,Nature Appreciation,Summer,Governor Generoso
+Jakka,"Bring a beach umbrella, sunblock, swimwear, and portable speakers.",3000,Beach  ,Relaxation,Summer,Governor Generoso
+Sitio Baidang River,"Pack river shoes, mosquito repellent, and a hammock or picnic mat.",1000,Nature,Relaxation,Summer,Governor Generoso
+The Wall Dive Spot,"Bring diving gear, a GoPro or underwater camera, reef-safe sunscreen, and a dry towel.",5000,Beach,Adventure,Summer,Governor Generoso
+Centennial Tree ,"Wear walking shoes, bring a journal or sketchpad, and prepare for short hikes.",1000,Cultural,Cultural Discovery,Summer,Governor Generoso
+Little Bora Campsite,"Pack a tent, eco-friendly supplies, flashlight, and insect spray.",3000,Beach,Nature Appreciation,Summer,Governor Generoso
+Sigaboy Mount Calvary,"Wear hiking boots, bring trail snacks, a walking stick, and a water bladder.",500,Nature,Nature Appreciation,Summer,Governor Generoso
+Cocohut D'Banzali Beach Resort,"Pack a beach hat, cooler, picnic essentials, and games for group fun.",3000,Beach,Relaxation,Summer,Governor Generoso
+Ahon Beach Camp and Dive Site,"Bring snorkeling gear, beach shoes, waterproof flashlight, and a dry bag.",200,Beach,Adventure,Summer,Tarragona
+Padada Beach Resort,"Pack extra swimwear, energy drinks, and water shoes for shoreline exploration.",300,Beach,Adventure,Summer,Tarragona
+Amay's Beach,"Bring a beach blanket, sunglasses, relaxing music playlist, and snacks.",200,Beach,Relaxation,Summer,Tarragona
+Lambago Beach Front,"Carry a picnic basket, reef-friendly sunscreen, and a camera for sunset shots.",200,Beach,Relaxation,Summer,Tarragona
+Maypinggan Cave,"Wear sturdy shoes, bring a flashlight/headlamp, insect repellent, and a cap.",200,Nature,Relaxation,Summer,Tarragona
+Beach Ni Ama,"Pack light gear, wear rash guards, and bring snacks and a reusable water bottle.",200,Beach,Adventure,Summer,Tarragona
+Mahayahay Falls,"Bring water shoes, towel, eco-soap, and a trash bag to pack out waste.",200,Nature,Relaxation,Summer,Tarragona
+Mt. Mambutig,"Wear trekking boots, bring trail snacks, extra water, and a whistle for safety.",1000,Mountain,Nature Appreciation,Summer,Tarragona
+Adam's Haven,"Bring binoculars, wear breathable clothes, and pack a nature journal.",200,Mountain,Nature Appreciation,Summer,Tarragona
+Tubaon Falls,"Pack waterproof shoes, a compact hammock, and an eco-friendly bug spray.",300,Nature,Relaxation,Summer,Tarragona
+Maganda Inland Resort,"Bring swimwear, flip-flops, towel, and sunblock for poolside lounging.",300,Nature,Relaxation,Summer,Tarragona
+Busay Falls,"Bring non-slip footwear, waterproof bag, trail snacks, and a first-aid kit.",300,Nature,Adventure,Summer,Boston
+Magpong Falls,"Wear aqua shoes, pack extra clothes, bring insect repellent and enough water.",300,Nature,Adventure,Summer,Boston
+Jabs Beach Resort,"Bring your beach hat, floaties, waterproof phone pouch, and beach towel.",300,Beach,Relaxation,Summer,Boston
+Higadan,"Carry a picnic mat, sunblock, portable speaker, and flip-flops.",300,Beach,Relaxation,Summer,Boston
+Punta,"Pack a sun hat, snacks, sunglasses, and beach umbrella if possible.",300,Beach ,Relaxation,Summer,Boston
+Tugonan Falls and Ecopark,"Bring binoculars, eco-bag for trash, and nature guidebook; wear light hiking gear.",300,Nature,Nature Appreciation,Summer,Boston
+Amor Del Carmen Inland Resort,"Wear light trekking clothes, bring a water tumbler, and a portable fan or umbrella.",1000,Mountain,Nature Appreciation,Summer,Boston
+Binaroto Rock Formation,"Wear sturdy shoes, bring a camera for the views, and bring a snack stash.",1000,Nature,Adventure,Summer,Boston
+Caatihan Falls,"Pack towels, quick-dry clothes, bug spray, and a foldable chair or mat.",1000,Nature,Relaxation,Summer,Boston
+Kabaiyan Cold Spring,"Bring swimwear, waterproof slippers, and eco-friendly water bottles.",1000,Nature,Relaxation,Summer,Boston
+Boston Seawall,"Bring a camera, notebook, snacks, and a respectful attitude for locals and customs.",20,Cultural,Cultural Discovery,Holiday Season,Boston
+Boston Pacific View Park,"Wear comfy clothes, bring binoculars, and prepare for scenic walks and photos.",20,Cultural,Cultural Discovery,Holiday Season,Boston
