@@ -22,6 +22,10 @@ import {
   Stack
 } from '@mui/material';
 import './SmartTourAI.css';
+import RecommendationsModal from './RecommendationsModal';
+import RatingModal from './RatingModal';
+import './RecommendationsModal.css';
+
 // Configure axios defaults
 axios.defaults.baseURL = 'http://localhost:5000';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
@@ -64,6 +68,9 @@ function SmartTourAI() {
     system_satisfaction_score: 0,
     analytics_satisfaction_score: 0
   });
+
+  const [recommendationModalOpen, setRecommendationModalOpen] = useState(false);
+  const [ratingModalOpen, setRatingModalOpen] = useState(false);
 
   const destinationTypes = [
     { value: 1, label: 'Beach' },
@@ -234,6 +241,7 @@ function SmartTourAI() {
       // Format the request data to match backend expectations
       const requestData = {
         budget: parseFloat(formData.budget),
+        destination: formData.destination,
         destination_type: selectedDestinationType.toLowerCase(),
         travel_season: selectedTravelSeason.toLowerCase(),
         travel_purpose: selectedTravelPurpose.toLowerCase(),
@@ -316,7 +324,7 @@ function SmartTourAI() {
 
         console.log('Setting recommendations state:', JSON.stringify(newRecommendations, null, 2));
         setRecommendations(newRecommendations);
-        
+        setRecommendationModalOpen(true);
         setSnackbar({
           open: true,
           message: 'Successfully saved preferences and got recommendations!',
@@ -352,87 +360,84 @@ function SmartTourAI() {
   };
 
   const renderRecommendations = () => {
-    console.log('Rendering recommendations. Current state:', recommendations);
-    
-    // Check if we have any recommendations
-    if (!recommendations || (!recommendations.prescriptive?.length && !recommendations.predictive?.length)) {
-      console.log('No recommendations to display');
-      return null;
+    const prescriptive = recommendations.prescriptive || [];
+    const predictive = recommendations.predictive || [];
+    const maxLength = Math.max(prescriptive.length, predictive.length);
+
+    if (maxLength === 0) {
+      return (
+        <Typography variant="body1" color="text.secondary">
+          No recommendations to display.
+        </Typography>
+      );
     }
 
     return (
       <Box sx={{ mt: 4 }}>
-        <Grid container spacing={3}>
-          {/* Prescriptive Recommendations */}
-          <Grid item xs={12} md={6}>
-            <Paper elevation={3} sx={{ p: 2 }}>
-              <Typography variant="h6" gutterBottom color="primary">
-                Budget Prescription
-              </Typography>
-              <Typography variant="body2" color="text.secondary" paragraph>
-                Based on your trip duration and destination preferences
-              </Typography>
-              {recommendations.prescriptive?.length > 0 ? (
-                recommendations.prescriptive.map((rec, index) => (
-                  <Card key={index} sx={{ mb: 2 }}>
-                    <CardContent>
-                      <Typography variant="h6" gutterBottom>
-                        {rec.destination}
-                      </Typography>
-                      <Typography variant="body1" color="text.secondary" paragraph>
-                        Daily Budget: ₱{rec.daily_budget}
-                      </Typography>
-                      <Typography variant="body1" color="text.secondary" paragraph>
-                        Trip Duration: {rec.trip_duration} days
-                      </Typography>
-                      <Typography variant="h6" color="primary" paragraph>
-                        Total Budget: ₱{rec.total_budget}
-                      </Typography>
-                      <Divider sx={{ my: 1 }} />
-                      <Typography variant="subtitle1" color="primary" gutterBottom>
-                        Packing Tips:
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary" paragraph>
-                        Since you're going to {rec.destination_type}, you need to bring: {rec.packing_tips}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                ))
-              ) : (
-                <Typography variant="body1" color="text.secondary">
-                  No prescriptive recommendations available.
-                </Typography>
-              )}
-            </Paper>
-          </Grid>
-
-          {/* Predictive Recommendations */}
-          <Grid item xs={12} md={6}>
-            <Paper elevation={3} sx={{ p: 2 }}>
-              <Typography variant="h6" gutterBottom color="secondary">
-                Predictive Recommendations
-              </Typography>
-              <Typography variant="body2" color="text.secondary" paragraph>
-                Based on machine learning analysis
-              </Typography>
-              {recommendations.predictive?.length > 0 ? (
-                recommendations.predictive.map((rec, index) => (
-                  <Card key={index} sx={{ mb: 2 }}>
-                    <CardContent>
-                      <Typography variant="h6" gutterBottom>
-                        Based on your preferences, we predict you'd enjoy {rec.destination} most!
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                ))
-              ) : (
-                <Typography variant="body1" color="text.secondary">
-                  No predictive recommendations available.
-                </Typography>
-              )}
-            </Paper>
-          </Grid>
-        </Grid>
+        {Array.from({ length: maxLength }).map((_, idx) => (
+          <Box key={idx} className="recommendation-row" sx={{ mb: 3, p: { xs: 1, md: 2 } }}>
+            {/* Budget Prescription */}
+            <Typography variant="subtitle2" color="primary" sx={{ fontWeight: 700, mb: 1, letterSpacing: 1 }}>
+              Budget Prescription
+            </Typography>
+            <Card className="recommendation-card" sx={{ mb: 2 }}>
+              <CardContent>
+                {prescriptive[idx] ? (
+                  <>
+                    <Typography variant="h6" gutterBottom>
+                      {prescriptive[idx].destination}
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary" paragraph>
+                      Daily Budget: ₱{prescriptive[idx].daily_budget}
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary" paragraph>
+                      Trip Duration: {prescriptive[idx].trip_duration} days
+                    </Typography>
+                    <Typography variant="h6" color="primary" paragraph>
+                      Total Budget: ₱{prescriptive[idx].total_budget}
+                    </Typography>
+                    <Divider sx={{ my: 1 }} />
+                    <Typography variant="subtitle1" color="primary" gutterBottom>
+                      Packing Tips:
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" paragraph>
+                      Since you're going to {prescriptive[idx].destination_type}, you need to bring: {prescriptive[idx].packing_tips}
+                    </Typography>
+                  </>
+                ) : (
+                  <Typography variant="body2" color="text.secondary">
+                    No prescriptive recommendation.
+                  </Typography>
+                )}
+              </CardContent>
+            </Card>
+            {/* Predictive Recommendation */}
+            <Typography variant="subtitle2" color="primary" sx={{ fontWeight: 700, mb: 1, letterSpacing: 1 }}>
+              Predictive Recommendation
+            </Typography>
+            <Card
+              className={`recommendation-card${idx === 0 ? ' recommended-card' : ''}`}
+              sx={{ position: 'relative' }}
+            >
+              <CardContent>
+                {idx === 0 && predictive[idx] && (
+                  <span className="recommended-badge">
+                    <span role="img" aria-label="star">⭐</span> Recommended for You
+                  </span>
+                )}
+                {predictive[idx] ? (
+                  <Typography variant="h6" gutterBottom>
+                    Based on your preferences, we predict you'd enjoy {predictive[idx].destination} most!
+                  </Typography>
+                ) : (
+                  <Typography variant="body2" color="text.secondary">
+                    No predictive recommendation.
+                  </Typography>
+                )}
+              </CardContent>
+            </Card>
+          </Box>
+        ))}
       </Box>
     );
   };
@@ -484,6 +489,15 @@ function SmartTourAI() {
 
     fetchRatings();
   }, []);
+
+  const handleCloseRecommendationsModal = () => {
+    setRecommendationModalOpen(false);
+    setTimeout(() => setRatingModalOpen(true), 300); // open rating modal after a short delay
+  };
+
+  const handleCloseRatingModal = () => {
+    setRatingModalOpen(false);
+  };
 
   return (
     <Container maxWidth="md" className="ai-content">
@@ -633,55 +647,7 @@ function SmartTourAI() {
         </form>
       </Paper>
 
-      {/* Render recommendations */}
-      {renderRecommendations()}
 
-      {/* Rating Footer */}
-      <Paper elevation={3} sx={{ mt: 4, p: 3 }}>
-        <Typography variant="h6" gutterBottom>
-          Rate Your Experience
-        </Typography>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6}>
-            <Stack spacing={1}>
-              <Typography variant="subtitle1">System Satisfaction</Typography>
-              <Rating
-                value={ratings.system_satisfaction_score}
-                onChange={(event, newValue) => handleRatingChange('system_satisfaction_score', newValue)}
-                precision={0.5}
-              />
-              <Typography variant="caption" color="text.secondary">
-                Average Rating: {averageRatings.system_satisfaction_score.toFixed(1)} / 5.0
-              </Typography>
-            </Stack>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Stack spacing={1}>
-              <Typography variant="subtitle1">Analytics Satisfaction</Typography>
-              <Rating
-                value={ratings.analytics_satisfaction_score}
-                onChange={(event, newValue) => handleRatingChange('analytics_satisfaction_score', newValue)}
-                precision={0.5}
-              />
-              <Typography variant="caption" color="text.secondary">
-                Average Rating: {averageRatings.analytics_satisfaction_score.toFixed(1)} / 5.0
-              </Typography>
-            </Stack>
-          </Grid>
-          <Grid item xs={12}>
-            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleSubmitRating}
-                disabled={ratings.system_satisfaction_score === 0 || ratings.analytics_satisfaction_score === 0}
-              >
-                Submit Rating
-              </Button>
-            </Box>
-          </Grid>
-        </Grid>
-      </Paper>
 
       <Snackbar
         open={snackbar.open}
@@ -693,8 +659,27 @@ function SmartTourAI() {
           {snackbar.message}
         </Alert>
       </Snackbar>
+
+      <RecommendationsModal
+        open={recommendationModalOpen}
+        onClose={handleCloseRecommendationsModal}
+        recommendations={recommendations}
+        renderRecommendations={renderRecommendations}
+        ratings={ratings}
+        averageRatings={averageRatings}
+        handleRatingChange={handleRatingChange}
+        handleSubmitRating={handleSubmitRating}
+      />
+      <RatingModal
+        open={ratingModalOpen}
+        onClose={handleCloseRatingModal}
+        ratings={ratings}
+        averageRatings={averageRatings}
+        handleRatingChange={handleRatingChange}
+        handleSubmitRating={handleSubmitRating}
+      />
     </Container>
   );
 }
 
-export default SmartTourAI; 
+export default SmartTourAI;

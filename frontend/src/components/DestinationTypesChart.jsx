@@ -9,6 +9,7 @@ import {
   Legend
 } from 'recharts';
 import axios from 'axios';
+import './ChartsDashboard.css';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
@@ -64,11 +65,11 @@ function DestinationTypesChart() {
   }
 
   return (
-    <Paper elevation={3} sx={{ p: 2, mt: 2 }}>
-      <Typography variant="h6" gutterBottom>
+    <Paper elevation={3} className="chart-card fade-in-up">
+      <Typography className="chart-title" gutterBottom>
         Distribution of Preferred Destination Types
       </Typography>
-      <Box sx={{ width: '100%', height: 300 }}>
+      <Box className="chart-container">
         <ResponsiveContainer>
           <PieChart>
             <Pie
@@ -80,6 +81,9 @@ function DestinationTypesChart() {
               fill="#8884d8"
               dataKey="value"
               label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+              isAnimationActive={true}
+              animationDuration={1200}
+              animationBegin={200}
             >
               {distribution.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -94,4 +98,4 @@ function DestinationTypesChart() {
   );
 }
 
-export default DestinationTypesChart; 
+export default DestinationTypesChart;

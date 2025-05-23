@@ -5,11 +5,12 @@
 }
 
 .ai-content {
-
-  min-height: calc(85vh - 200px);
+  min-height: calc(80vh - 200px);
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  margin-top: 0.5rem;  
+  padding-top: 0;
 }
 
 .content-paper {
@@ -32,6 +33,52 @@
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.form-paper > * {
+  position: relative;
+  z-index: 3;
+}
+
+.form-paper::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 16px;
+  padding: 0;
+  z-index: 2;
+  background: linear-gradient(
+    120deg,
+    #90caf9,
+    #fffde7,
+    #90caf9
+  );
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+@keyframes border-glow-move {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 .form-title {
@@ -72,6 +119,27 @@
 
 .form-field .MuiSelect-select {
   font-size: 0.8rem;
+}
+
+/* Make input fields stand out more */
+.form-field .MuiOutlinedInput-root {
+  background: #f5faff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(25, 118, 210, 0.07);
+  border: 1.5px solid #90caf9;
+}
+
+.form-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px #90caf9;
+}
+
+.form-field .MuiInputLabel-root {
+  color: #1976d2;
+  font-weight: 600;
+  background: rgba(255,255,255,0.7);
+  padding: 0 4px;
+  border-radius: 4px;
 }
 
 /* Add styles for dropdown menu items */
@@ -160,4 +228,4 @@
   .form-paper {
     padding: 1.5rem;
   }
-} 
+}

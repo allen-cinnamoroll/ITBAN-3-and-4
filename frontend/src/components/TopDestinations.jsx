@@ -10,6 +10,7 @@ import {
   ResponsiveContainer
 } from 'recharts';
 import axios from 'axios';
+import './ChartsDashboard.css';
 
 function TopDestinations() {
   const [topDestinations, setTopDestinations] = useState([]);
@@ -26,9 +27,7 @@ function TopDestinations() {
           setError(null);
         }
       } catch (error) {
-        console.error('Error fetching top destinations:', error);
         setError('Failed to load top destinations');
-        // Fallback data in case of error
         setTopDestinations([
           { name: 'Mati City', recommendations: 150 },
           { name: 'Cateel', recommendations: 120 },
@@ -63,11 +62,11 @@ function TopDestinations() {
   }
 
   return (
-    <Paper elevation={3} sx={{ p: 2, mt: 2 }}>
-      <Typography variant="h6" gutterBottom>
+    <Paper elevation={3} className="chart-card fade-in-up">
+      <Typography className="chart-title" gutterBottom>
         Top 5 Recommended Destinations
       </Typography>
-      <Box sx={{ width: '100%', height: 300 }}>
+      <Box className="chart-container">
         <ResponsiveContainer>
           <BarChart
             data={topDestinations}
@@ -79,10 +78,17 @@ function TopDestinations() {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" hide={true} />
+            <XAxis dataKey="name" />
             <YAxis label={{ value: 'Recommendations', angle: -90, position: 'insideLeft' }} />
             <Tooltip formatter={(value, name) => [`${value} recommendations`, name]} />
-            <Bar dataKey="recommendations" fill="#1976d2" />
+            <Bar
+              dataKey="recommendations"
+              fill="#1976d2"
+              isAnimationActive={true}
+              animationDuration={1200}
+              animationBegin={200}
+              radius={[8, 8, 0, 0]}
+            />
           </BarChart>
         </ResponsiveContainer>
       </Box>
@@ -90,4 +96,4 @@ function TopDestinations() {
   );
 }
 
-export default TopDestinations; 
+export default TopDestinations;

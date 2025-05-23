@@ -1,0 +1,334 @@
+.recommendations-modal-box {
+  background: rgba(255, 255, 255, 0.181); /* glass effect */
+  backdrop-filter: blur(12px);
+  padding: 2rem;
+  border-radius: 28px;
+  max-width: 800px;
+  width: 90vw;
+  max-height: 90vh;
+  overflow: hidden; /* Prevent scrolling */
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.13);
+  animation: modal-fade-in 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+.recommendations-modal-box:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  padding: 2px;
+  background: linear-gradient(120deg, #42a5f5 0%, #7e57c2 100%);
+  z-index: 0;
+  pointer-events: none;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+.recommendations-modal-box > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Modal title with animated gradient text */
+.recommendations-modal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  color: #fff; /* Solid white text */
+  text-shadow:
+    0 0 12px #42a5f5,   /* Blue glow */
+    0 0 24px #1976d2,   /* Deeper blue glow */
+    0 2px 12px #fff;    /* Soft white shadow for readability */
+  animation: blue-glow 2s infinite alternate;
+}
+
+@keyframes blue-glow {
+  0% {
+    text-shadow:
+      0 0 12px #42a5f5,
+      0 0 24px #1976d2,
+      0 2px 12px #fff;
+  }
+  100% {
+    text-shadow:
+      0 0 24px #1976d2,
+      0 0 48px #42a5f5,
+      0 2px 12px #fff;
+  }
+}
+
+.recommendations-modal-subtitle {
+  color: #555;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.recommendations-modal-content {
+  padding: 1rem;
+  background-color: #f9fafe;
+  border-radius: 16px;
+  box-shadow: inset 0 0 8px rgba(25, 118, 210, 0.06);
+}
+
+.recommendations-modal-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.recommendations-modal-actions .MuiButton-outlined {
+  border-radius: 999px;
+  padding: 0.5em 2em;
+  font-weight: 600;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(2px);
+  border: 1.5px solid #1976d2;
+  color: #1976d2;
+  transition: background 0.2s, color 0.2s;
+}
+.recommendations-modal-actions .MuiButton-outlined:hover {
+  background: #1976d2;
+  color: #fff;
+}
+
+.recommendations-modal-close-btn {
+  background-color: #1976d2;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.recommendations-modal-close-btn:hover {
+  background-color: #115293;
+}
+
+/* Card with animated border and glass effect */
+.recommendation-card {
+  background: rgba(236, 239, 255, 0.85);
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(25, 118, 210, 0.09);
+  border: 2px solid #e3f2fd;
+  transition: box-shadow 0.3s, transform 0.2s, border 0.3s;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+}
+.recommendation-card:hover {
+  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.18);
+  transform: translateY(-4px) scale(1.03);
+  border: 2.5px solid #7e57c2;
+  background: rgba(236, 239, 255, 0.97);
+}
+
+/* Highlight the recommended card */
+.recommended-card {
+  border: 2.5px solid #ffb300 !important;
+  box-shadow: 0 8px 32px rgba(255,179,0,0.18) !important;
+  animation: pulse-recommend 1.2s infinite alternate;
+}
+@keyframes pulse-recommend {
+  0% { box-shadow: 0 0 0 0 rgba(255,179,0,0.18);}
+  100% { box-shadow: 0 0 16px 6px rgba(255,179,0,0.13);}
+}
+
+/* Recommended badge with pop effect */
+.recommended-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffe082 60%, #ffd54f 100%);
+  color: #795548;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 12px;
+  padding: 0.3em 1em;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(255, 179, 0, 0.12);
+  letter-spacing: 0.5px;
+  animation: badge-pop 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+@keyframes badge-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  80% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Section labels */
+.recommendations-modal-content .MuiTypography-subtitle2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+  font-size: 1.08rem;
+  text-shadow: 0 2px 8px #e3f2fd;
+}
+
+/* Carousel navigation */
+.carousel-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.carousel-actions .MuiIconButton-root {
+  background: linear-gradient(135deg, #42a5f5 60%, #7e57c2 100%);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.13);
+  border-radius: 50%;
+  transition: background 0.2s, transform 0.2s;
+}
+.carousel-actions .MuiIconButton-root:disabled {
+  background: #e3e3e3;
+  color: #bdbdbd;
+}
+.carousel-actions .MuiIconButton-root:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1976d2 60%, #7e57c2 100%);
+  transform: scale(1.13);
+}
+.carousel-index {
+  font-size: 1.1rem;
+  color: #1976d2;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* X button top right */
+.recommendations-modal-close-x {
+  background: rgba(33, 150, 243, 0.85); /* Blue background */
+  color: #fff !important;                /* White X icon */
+  border-radius: 50%;
+  box-shadow: 0 2px 12px #42a5f5, 0 0 8px #fff;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+}
+.recommendations-modal-close-x:hover {
+  background: #1976d2;
+  color: #fff;
+  box-shadow: 0 0 16px 4px #42a5f5, 0 0 12px #fff;
+}
+
+/* Fade-in animation for modal content */
+@keyframes rating-fade-in {
+  from { opacity: 0; transform: translateY(40px) scale(0.97);}
+  to   { opacity: 1; transform: translateY(0) scale(1);}
+}
+.recommendations-modal-rating {
+  margin: 0 auto 1.5rem auto;
+  padding: 2rem 1.5rem;
+  border-radius: 22px;
+  background: transparent !important; 
+  box-shadow: none !important;      
+  border: none !important;           
+  position: relative;
+  animation: rating-fade-in 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.recommendations-modal-rating:before {
+  display: none !important;           
+}
+
+/* Animate the submit button */
+.recommendations-modal-rating .MuiButton-contained {
+  background: linear-gradient(90deg, #1976d2 60%, #7e57c2 100%);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 18px rgba(33,150,243,0.13);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+.recommendations-modal-rating .MuiButton-contained:hover {
+  background: linear-gradient(90deg, #7e57c2 60%, #1976d2 100%);
+  transform: scale(1.07);
+  box-shadow: 0 8px 32px rgba(33,150,243,0.18);
+}
+
+/* Glow effect for selected stars */
+.recommendations-modal-rating .MuiRating-iconFilled {
+  color: #ffb300;
+  filter: drop-shadow(0 0 6px #ffe082);
+  transition: filter 0.2s;
+}
+.recommendations-modal-rating .MuiRating-iconHover {
+  color: #ffd54f;
+  filter: drop-shadow(0 0 10px #ffe082);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .recommendations-modal-box {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+  .recommendations-modal-title {
+    font-size: 1.5rem;
+  }
+  .recommendation-card {
+    padding: 0.5rem;
+  }
+}
+
+/* Compact rating modal styles */
+.rating-modal-compact {
+  padding: 1.2rem 0.5rem !important;
+  border-radius: 18px !important;
+  max-width: 420px !important;
+  width: 95vw !important;
+  min-width: 0 !important;
+}
+.rating-modal-compact .recommendations-modal-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+}
+.rating-modal-compact .recommendations-modal-rating {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+.rating-modal-compact .MuiGrid-container {
+  gap: 0.5rem 0 !important;
+}
+.rating-modal-compact .MuiGrid-item {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.rating-modal-compact .MuiStack-root {
+  align-items: center;
+}
+.rating-modal-compact .MuiTypography-subtitle1 {
+  font-size: 1.05rem;
+}
+.rating-modal-compact .MuiRating-root {
+  font-size: 2rem;
+}
+.rating-modal-compact .MuiButton-contained {
+  margin-top: 0.5rem;
+  padding: 0.4em 2em;
+  font-size: 1rem;
+}
+.rating-modal-compact .recommendations-modal-actions {
+  margin-top: 1rem;
+}
+
+/* Make all text in the rating modal white */
+.rating-modal-compact,
+.rating-modal-compact .MuiTypography-root,
+.rating-modal-compact .MuiTypography-subtitle1,
+.rating-modal-compact .MuiTypography-caption,
+.rating-modal-compact .MuiButton-contained,
+.rating-modal-compact .MuiButton-outlined {
+  color: #fff !important;
+}
+
+/* Make the star outlines (empty stars) white */
+.rating-modal-compact .MuiRating-iconEmpty {
+  color: #fff !important;
+  opacity: 0.85;
+}
+

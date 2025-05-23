@@ -10,6 +10,7 @@ import {
   ResponsiveContainer
 } from 'recharts';
 import axios from 'axios';
+import './ChartsDashboard.css';
 
 function MunicipalitiesChart() {
   const [distribution, setDistribution] = useState([]);
@@ -69,11 +70,11 @@ function MunicipalitiesChart() {
   }
 
   return (
-    <Paper elevation={3} sx={{ p: 2, mt: 2 }}>
-      <Typography variant="h6" gutterBottom>
+    <Paper elevation={3} className="chart-card fade-in-up">
+      <Typography className="chart-title" gutterBottom>
         Preferred Municipalities
       </Typography>
-      <Box sx={{ width: '100%', height: 300 }}>
+      <Box className="chart-container">
         <ResponsiveContainer>
           <BarChart
             data={distribution}
@@ -94,7 +95,14 @@ function MunicipalitiesChart() {
             />
             <YAxis label={{ value: 'Number of Recommendations', angle: -90, position: 'insideLeft' }} />
             <Tooltip formatter={(value) => [`${value} recommendations`, 'Count']} />
-            <Bar dataKey="value" fill="#82ca9d" />
+            <Bar
+              dataKey="value"
+              fill="#82ca9d"
+              isAnimationActive={true}
+              animationDuration={1200}
+              animationBegin={200}
+              radius={[8, 8, 0, 0]}
+            />
           </BarChart>
         </ResponsiveContainer>
       </Box>
@@ -102,4 +110,4 @@ function MunicipalitiesChart() {
   );
 }
 
-export default MunicipalitiesChart; 
+export default MunicipalitiesChart;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Paper, Typography, Grid, CircularProgress } from '@mui/material';
 import axios from 'axios';
+import './ChartsDashboard.css';
 
 function SatisfactionKPIs() {
   const [ratings, setRatings] = useState({

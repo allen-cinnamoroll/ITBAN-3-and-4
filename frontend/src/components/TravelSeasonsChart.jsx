@@ -10,6 +10,7 @@ import {
   ResponsiveContainer
 } from 'recharts';
 import axios from 'axios';
+import './ChartsDashboard.css';
 
 function TravelSeasonsChart() {
   const [distribution, setDistribution] = useState([]);
@@ -44,7 +45,7 @@ function TravelSeasonsChart() {
 
   if (loading) {
     return (
-      <Paper elevation={3} sx={{ p: 2, mt: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 300 }}>
+      <Paper elevation={3} className="chart-card">
         <CircularProgress />
       </Paper>
     );
@@ -52,7 +53,7 @@ function TravelSeasonsChart() {
 
   if (error) {
     return (
-      <Paper elevation={3} sx={{ p: 2, mt: 2 }}>
+      <Paper elevation={3} className="chart-card">
         <Typography color="error" align="center">
           {error}
         </Typography>
@@ -61,11 +62,11 @@ function TravelSeasonsChart() {
   }
 
   return (
-    <Paper elevation={3} sx={{ p: 2, mt: 2 }}>
-      <Typography variant="h6" gutterBottom>
+    <Paper elevation={3} className="chart-card">
+      <Typography className="chart-title" gutterBottom>
         Preferred Travel Seasons
       </Typography>
-      <Box sx={{ width: '100%', height: 300 }}>
+      <Box className="chart-container">
         <ResponsiveContainer>
           <BarChart
             data={distribution}
@@ -94,4 +95,4 @@ function TravelSeasonsChart() {
   );
 }
 
-export default TravelSeasonsChart; 
+export default TravelSeasonsChart;
